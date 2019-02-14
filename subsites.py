@@ -6,49 +6,52 @@
 """ Script to get all subsites of a website """
 
 import json
+
 import requests
 from bs4 import BeautifulSoup as bs
 
-sites = ['https://www.opensource.com']
+sites = ["https://www.opensource.com"]
+
 
 def base_site(site):
-    ind = site.find('/', 7)
+    ind = site.find("/", 7)
     if ind == -1:
-        return site+'/'
+        return site + "/"
     return site[:ind]
+
 
 def enqueue(queue, hrefs):
     queue += hrefs
 
+
 def get_hrefs(url, site):
     res = requests.get(url)
-    html = bs(res.content, 'html.parser')
-    atags = html.find_all('a', href=True)
-    hrefs = [tag['href'] for tag in atags]
+    html = bs(res.content, "html.parser")
+    atags = html.find_all("a", href=True)
+    hrefs = [tag["href"] for tag in atags]
 
     lshrefs = []
 
     for href in hrefs:
 
-        if '#' in href:
+        if "#" in href:
             continue
 
         if site in href:
             lshrefs.append(href)
 
         elif not "http://" in href and not "https://" in href:
-            
-            if href[0] == '/':
+
+            if href[0] == "/":
                 lshrefs.append(base_site(site) + href)
 
-            elif url[-1] == '/':
+            elif url[-1] == "/":
                 lshrefs.append(url + href)
 
             else:
                 lshrefs.append(url + "/" + href)
 
         return lshrefs
-
 
 
 if __name__ == "__main__":
@@ -79,8 +82,7 @@ if __name__ == "__main__":
 
         json_sites[site] = visited
 
-    with open('subsites.json', 'w') as outfile:
+    with open("subsites.json", "w") as outfile:
         json.dump(json_sites, outfile)
 
-    print('-----completed-----')
-
+    print("-----completed-----")
