@@ -5,31 +5,8 @@ apt-get update
 apt-get install -y sudo
 
 # add user
-##user="raman"
-##useradd -m $user
-# set password
-##password=uiop[]
-##echo -e "$password\n$passowrd\n" | sudo passwd $user
-
-# add sudo access
-##usermod -aG sudo $user
-
-# replace sh shell to bash shell
-##var=`grep "^$user" /etc/passwd | cut -d : -f 7`
-
-##if [ $var = "/bin/sh" ]
-##then
-##	sed -i -e '/raman/s/bin\/sh/bin\/bash/g' /etc/passwd
-##fi
-
 user="raman"
-password="uiop[]"
-
-useradd -m -p $password -s /bin/bash -G sudo $user
-
-# switch user and execute
-
-sudo -i -u $user bash << EOF
+useradd -m -s /bin/bash -G sudo $user
 
 # ssh configuration
 sudo apt-get update
@@ -39,35 +16,19 @@ sudo ssh-keygen -t rsa -P " " -f "/home/$user/.ssh/id_rsa" -q
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 # vi configuration
-if [ -f /home/$user/.exrc ]
-then
-	echo "set autowrite
-	set hidden
-	set ignorecase
-	set incsearch
-	set nomesg
-	set number
-	set shiftwidth=4
-	set showcmd
-	set showmatch
-	set smartcase
-	set tabstop=4
-	highlight LineNr cterm=NONE ctermfg=DarkGrey ctermbg=NONE" >> /home/$user/.exrc
-else
-	touch /home/$user/.exrc
-	echo "set autowrite
-	set hidden
-	set ignorecase
-	set incsearch
-	set nomesg
-	set number
-	set shiftwidth=4
-	set showcmd
-	set showmatch
-	set smartcase
-	set tabstop=4
-	highlight LineNr cterm=NONE ctermfg=DarkGrey ctermbg=NONE" >> /home/$user/.exrc
-fi
+touch /home/$user/.exrc
+echo "set autowrite
+set hidden
+set ignorecase
+set incsearch
+set nomesg
+set number
+set shiftwidth=4
+set showcmd
+set showmatch
+set smartcase
+set tabstop=4
+highlight LineNr cterm=NONE ctermfg=DarkGrey ctermbg=NONE" >> /home/$user/.exrc
 
 # start ssh
 # sysVinit
@@ -77,24 +38,25 @@ sudo service ssh start
 
 # installing openjdk8
 # updating the packages list
-sudo apt-get update
+apt-get update
 # installing the dependencies necessary to add a new repository over HTTPS
-sudo apt-get install -y apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common
+apt-get install -y apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common
 # import the repository's GPG key
 wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
 # add the adoptopenjdk apt repository to the system
-sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
 # update apt sources and install Java 8
-sudo apt-get update && apt-get install -y adoptopenjdk-8-hotspot
+apt-get update && apt-get install -y adoptopenjdk-8-hotspot
 # JAVA_HOME environment variable
-sudo echo "JAVA_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64" >> /etc/environment
+echo "JAVA_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64" >> /etc/environment
 # for changes to take effect on your current shell
 source /etc/environment
 
 # hadoop configuration
-wget https://archive.apache.org/dist/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz
-tar -xzf hadoop-3.2.1.tar.gz
-mv hadoop-3.2.1/ /usr/local/hadoop/ 
+mkdir /home/$user/Downloads
+wget -C https://archive.apache.org/dist/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz /home/$user/Downloads
+tar -xzf /home/$user/Downloads/hadoop-3.2.1.tar.gz
+mv /home/$user/Downloads/hadoop-3.2.1/ /usr/local/hadoop/ 
 
 # set environment variables
 echo "PATH=/usr/local/hadoop/bin:/usr/local/hadoop/sbin:$PATH" >> /home/$user/.profile
@@ -162,4 +124,3 @@ sed -i "s/<configuration>/& \
 \t\t<name>mapreduce.reduce.env<\/name> \
 \t\t<value>HADOOP_MAPRED_HOME=$HADOOP_HOME<\/value> \
 \t<\/property>/" /usr/local/hadoop/etc/hadoop/mapred-site.xml
-EOF
