@@ -47,7 +47,7 @@ do
 		\n\t<\/property> \
 		\n\t<property> \
 		\n\t\t<name>hbase.zookeeper.quorum<\/name> \
-		\n\t\t<value>172.17.0.2<\/value> \
+		\n\t\t<value>172.17.0.2,172.17.0.3,172.17.0.4<\/value> \
 		\n\t<\/property> \
 		\n\t<property> \
 		\n\t\t<name>hbase.zookeeper.property.clientPort<\/name> \
@@ -92,7 +92,7 @@ do
 	sed -i 's/JAVA_HOME/& \
 	export JAVA_HOME=\/usr\/lib\/jvm\/adoptopenjdk-8-hotspot-amd64 \
 	/' /usr/local/hadoop/hbase/conf/hbase-env.sh 
-	sed -i '/# export JAVA_HOME/d' /usr/local/hadoop/hbase/conf/hbase-env.sh
+	#sed -i '/# export JAVA_HOME/d' /usr/local/hadoop/hbase/conf/hbase-env.sh
 	sed -i '/HBASE_MANAGES_ZK=true/s/^#//g' /usr/local/hadoop/hbase/conf/hbase-env.sh
 	
 	# .bashrc
