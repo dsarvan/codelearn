@@ -21,8 +21,6 @@ do
 		mv /home/$user/hive-3.1.2/ /usr/local/hadoop/hive/
 
 		# hive-site.xml
-		sed -i '/<configuration>/,/<\/configuration>/{//!d}' /usr/local/hadoop/hive/conf/hive-site.xml
-
 		sed -i 's/<configuration>/& \
 		\n\t<property> \
 		\n\t\t<name>javax.jdo.option.ConnectionURL<\/name> \
