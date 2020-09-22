@@ -11,7 +11,8 @@ mnode='172.17.0.2'
 enode='172.17.0.5'
 nodes='172.17.0.3 172.17.0.4'
 
-for node in $mnode $enode $nodes
+for ip in $mnode $enode $nodes
 do
+	$user@$ip
 
 done
