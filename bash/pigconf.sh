@@ -13,8 +13,18 @@ nodes='172.17.0.3 172.17.0.4'
 
 for ip in $mnode $enode $nodes
 do
-	$user@$ip
+	ssh -p 22 $user@$ip << EOF
 
-	wget -c http://apachemirror.wuchna.com/pig -p /home/$user/Downloads/
+	if [ $ip == $mnode ]
+	then
 
+		wget -c http://apachemirror.wuchna.com/pig/pig-0.17.0/pig-0.17.0.tar.gz -P /home/$user/Downloads/
+		tar -xzf /home/$user/Downloads/pig-0.17.0.tar.gz
+		mv /home/$user/pig-0.17.0/ /usr/local/hadoop/pig/
+
+	fi
+		
+	logout
+
+EOF
 done
