@@ -15,4 +15,6 @@ for ip in $mnode $enode $nodes
 do
 	$user@$ip
 
+	wget -c http://apachemirror.wuchna.com/pig -p /home/$user/Downloads/
+
 done
