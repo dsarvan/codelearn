@@ -24,7 +24,12 @@ do
 
 	fi
 
-	if [ $ip == enode ]
+	if [ $ip == $enode ]
+	then
+
+	fi
+
+	if [ $ip == $nodes ]
 	then
 
 	fi
