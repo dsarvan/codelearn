@@ -31,6 +31,7 @@ do
 
 	if [ $ip == $nodes ]
 	then
+		pwd
 
 	fi
 		
