@@ -23,17 +23,6 @@ do
 		mv /home/$user/pig-0.17.0/ /usr/local/hadoop/pig/
 
 	fi
-
-	if [ $ip == $enode ]
-	then
-
-	fi
-
-	if [ $ip == $nodes ]
-	then
-		pwd
-
-	fi
 		
 	logout
 
