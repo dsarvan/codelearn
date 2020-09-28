@@ -2,7 +2,7 @@
 # File: pigconf.sh
 # Name: D.Saravanan
 # Date: 20/09/2020
-# Script to install and configure Apache Pig in Hadoop
+# Script to install and configure Apache Pig-0.17.0 in Hadoop-3.2.1
 
 user='raman'
 
