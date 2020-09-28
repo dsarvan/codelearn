@@ -2,9 +2,9 @@
 # File: hbaseconf.sh
 # Name: D.Saravanan
 # Date: 09/09/2020
-# Bash script to install and configure HBase-2.2.5 in Hadoop-3.2.1
+# Script to install and configure Apache HBase-2.2.5 in Hadoop-3.2.1
 
-user="raman"
+user='raman'
 
 # Nodes
 mnode='172.17.0.2'
