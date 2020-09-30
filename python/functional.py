@@ -2,7 +2,7 @@
 # File: functional.py
 # Name: D.Saravanan
 # Date: 30/09/2020
-# Script to explain functional programming
+# Script to explain imperative, object-oriented, functional programming
 
 # Imperative Programming
 s = 0
