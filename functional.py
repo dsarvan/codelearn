@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+# File: functional.py
+# Name: D.Saravanan
+# Date: 30/09/2020
+# Script to explain functional programming
+
+# Imperative Programming
+s = 0
+for n in range(1, 10):
+    if n%3 == 0 or n%5 == 0:
+        s += n
+print(s)
+
+
+# Object-Oriented Programming
+s = []
+for n in range(1, 10):
+    if n%3 == 0 or n%5 == 0:
+        s.append(n)
+print(sum(s))
+
+
+# Functional Programming
+s = [n for n in range(1, 10) if n%3 == 0 or n%5 == 0]
+print(sum(s))
