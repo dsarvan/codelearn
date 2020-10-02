@@ -4,7 +4,7 @@
 # Date: 28/08/2020
 # Bash script to install and configure Hive-3.1.2 in Hadoop-3.2.1
 
-user="raman"
+user='raman'
 
 mnode='172.17.0.2'
 enode='172.17.0.5'
