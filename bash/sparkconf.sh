@@ -72,5 +72,7 @@ do
 
 	source ~/.bashrc
 
+	logout
+
 EOF
 done
