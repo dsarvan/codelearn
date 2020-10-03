@@ -19,7 +19,7 @@ cat /home/$user/.ssh/id_rsa.pub >> /home/$user/.ssh/authorized_keys
 service ssh start
 #systemctl start ssh
 
-# vi configuration
+# vim configuration
 touch /home/$user/.exrc
 echo "set autowrite
 set hidden
