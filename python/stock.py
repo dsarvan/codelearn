@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# File: stock.py
+# Date: 06/10/2020
 
 from scipy import stats
 import matplotlib.pyplot as plt
