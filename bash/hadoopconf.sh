@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# File: badoopconf.sh
+# Name: D.Saravanan
+# Date: 09/09/2020
+# Script to insall and configure Hadoop-3.2.1
 
 # update and install sudo
 apt-get update
