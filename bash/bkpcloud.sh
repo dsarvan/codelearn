@@ -5,6 +5,7 @@
 # Bash script to sync files to pcloud using rclone
 
 user=`whoami`
+tput clear
 
 echo -e "\nSync PCloud"
 echo -e "Today's date is `date | tr -s ' ' | cut -d ' ' -f 2,3,6`\n"
