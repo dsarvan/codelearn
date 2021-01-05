@@ -10,5 +10,5 @@ services="hotmail.com gmail.com microsoft.com verizon.net yahoo.com"
 
 for service in $services
 do
-    echo "Count of $service: `grep -icw $service $1`"
+    echo "Count of $service: `grep -cw $service $1`"
 done
