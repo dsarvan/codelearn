@@ -4,7 +4,7 @@
 # Date: 05/01/2021
 # Script to count the mail services from a file
 
-echo "Input file name is $1"
+echo -e "\nInput file name is $1"
 
 services="hotmail.com gmail.com microsoft.com verizon.net yahoo.com"
 
