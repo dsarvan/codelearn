@@ -12,7 +12,7 @@ integer = int(input("Enter an integer: "))
 numbers = [1000, 900, 500, 400, 100, 50, 40, 10, 9, 5, 4, 1]
 
 for n in numbers:
-    if integer != 0:
+    if integer > 0: 
         quotient = integer//n
 
         if quotient != 0:
