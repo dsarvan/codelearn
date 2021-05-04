@@ -2,7 +2,7 @@
 # File: byteobj.py
 # Name: D.Saravanan
 # Date: 04/05/2021
-# Script to print the byte value of value
+# Script to print the byte value
 
 def main():
     ''' main function '''
