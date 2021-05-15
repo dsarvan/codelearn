@@ -2,7 +2,7 @@
 # File: sumto.py
 # Name: D.Saravanan
 # Date: 14/05/2021
-# Script to use yeild and static type
+# Script to use yield and static type
 
 def numbers():
     """ lazy function, it only
