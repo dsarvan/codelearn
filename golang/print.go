@@ -4,9 +4,9 @@
 // Program to print a string
 
 package main
+
 import "fmt"
 
 func main() {
 	fmt.Println("Institute of Mathematical Sciences")
 }
-
