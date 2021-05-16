@@ -4,6 +4,7 @@
 // Program to print the length of a string
 
 package main
+
 import "fmt"
 
 func main() {
