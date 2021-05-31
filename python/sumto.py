@@ -2,7 +2,8 @@
 # File: sumto.py
 # Name: D.Saravanan
 # Date: 14/05/2021
-# Script to use yield and static type
+
+""" Script to use yield and static type """
 
 def numbers():
     """ lazy function, it only
@@ -15,7 +16,8 @@ def sumto(number: int) -> int:
     n parameter and return an integer result """
     summ: int = 0
     for num in numbers():
-        if num == number: break
+        if num == number: 
+            break
         summ += num
     return summ
 
