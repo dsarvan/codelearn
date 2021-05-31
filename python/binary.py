@@ -2,7 +2,8 @@
 # File: binary.py
 # Name: D.Saravanan
 # Date: 31/05/2021
-# Script to convert number from base 10 to base 2
+
+""" Script to convert number from base 10 to base 2 """
 
 import numpy as np
 
