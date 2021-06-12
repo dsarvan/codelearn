@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo "This scripts checks the existence of the messages file."
 echo "Checking..."
