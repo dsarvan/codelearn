@@ -8,29 +8,30 @@ option="yes"
 
 while [ $option == "yes" ]
 do
+    declare -i N
 	N=29
 
-	echo -e "\nI 'm thinking of a number! Try to guess the number I 'm thinking of: "
-	read num
+	echo -e "\\nI 'm thinking of a number! Try to guess the number I 'm thinking of: "
+	read -r num
 
-	while [ $num -ne $N ] 
+	while [ "$num" -ne $N ] 
 	do
-		if [ $num -lt $N ]
+		if [ "$num" -lt $N ]
 		then
 			echo "Too low! Guess again: "
-			read num
+			read -r num
 
-		else [ $num -gt $N ]
+		else [ "$num" -gt $N ]
 			echo "Too high! Guess again: "
-			read num
+			read -r num
 		fi
 	done
 
-	if [ $num -eq $N ]
+	if [ "$num" -eq $N ]
 	then
 		echo "That's it! Would you like to play again? (yes/no)"
-		read option
+		read -r option
 	fi
 done
 
-echo -e "Thanks for playing!\n"	
+echo -e "Thanks for playing!\\n"
