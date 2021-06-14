@@ -10,7 +10,7 @@ factorial() {
 
     for ((x=$1; x>=1; x--))
     do 
-        value=value*x
+        value=$((value*x))
     done 
 
     return $value
@@ -24,9 +24,9 @@ read -r n
 printf "Enter r: "
 read -r r
 
-factorial $n; value1=$?
-factorial $n-$r; value2=$?
-factorial $r; value3=$?
+factorial "$n"; value1=$?
+factorial "$n"-"$r"; value2=$?
+factorial "$r"; value3=$?
 
 (( combination = value1/(value2*value3) ))
-printf "Combination C($n,$r): $combination \n"
+printf "Combination C($n,$r): %d\\n" $combination
