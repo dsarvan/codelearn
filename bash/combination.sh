@@ -4,17 +4,29 @@
 # Date: 05/01/2021
 # Script to calculate combination C(n,r)
 
-#echo "Enter n: "
-#read n
-#echo "Enter r: "
-#read r
-
 factorial() {
-    value=1
-    for ((n=6; n<=1; n--))
+
+    declare -i value=1
+
+    for ((x=$1; x>=1; x--))
     do 
-        value=$($value * $n | bc)
+        value=value*x
     done 
+
+    return $value
 }
 
-factorial 6
+declare -i n
+declare -i r
+
+printf "Enter n: "
+read -r n
+printf "Enter r: "
+read -r r
+
+factorial $n; value1=$?
+factorial $n-$r; value2=$?
+factorial $r; value3=$?
+
+(( combination = value1/(value2*value3) ))
+printf "Combination C($n,$r): $combination \n"
