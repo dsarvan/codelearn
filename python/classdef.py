@@ -2,10 +2,12 @@
 # File: classdef.py
 # Name: D.Saravanan
 # Date: 25/05/2021
-# Script for defining classes 
+
+""" Script for defining classes """
 
 class Complex:
     """ complex number """
+
     def __init__(self, realpart, imagpart):
         """ assign arguments """
         self.real = realpart
