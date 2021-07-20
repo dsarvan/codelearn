@@ -17,11 +17,9 @@ turtle.tracer(0,0)
 n = 50 # 50 x 50 grid
 def draw_line(x1,y1,x2,y2):
     """ this function draw a line between (x1,y1) and (x2,y2) """
-    print(x1,y1,x2,y2)
-
-    turtle.penup()
+    turtle.up()
     turtle.goto(x1,y1)
-    turtle.pendown()
+    turtle.down()
     turtle.goto(x2,y2)
 
 def draw_grid():
