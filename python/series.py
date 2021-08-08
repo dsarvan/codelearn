@@ -6,12 +6,11 @@
 """ Script to print Fibonacci series """
 
 def fibonacci(fib1, fib2, num):
-
     """ fibonacci series generation """
-
     while num <= 51:
         print(fib1)
         fib1, fib2 = fib2, fib1+fib2
         num += 1
 
-fibonacci(0, 1, 1)
+if __name__ == "__main__":
+    fibonacci(0, 1, 1)
