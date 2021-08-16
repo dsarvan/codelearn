@@ -6,8 +6,11 @@
 """ Script to convert number to words """
 
 import inflect
+import num2word
 
 p = inflect.engine()
 
 number = int(input("Enter number: "))
 print(p.number_to_words(number))
+
+print(num2word.to_card(number))
