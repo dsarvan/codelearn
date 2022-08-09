@@ -10,11 +10,11 @@ import numpy as np
 num = int(input("Enter number (base 10): "))
 
 rval = []
-qval = int(num/2)
+qval = int(num / 2)
 
 while qval != 0:
-    rval.append(int(num%2))
-    qval = int(num/2)
+    rval.append(int(num % 2))
+    qval = int(num / 2)
     num = qval
 
 rval.reverse()
