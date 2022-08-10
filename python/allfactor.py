@@ -19,4 +19,4 @@ if __name__ == "__main__":
         NUM = int(NUM)
         print(f"The factors of {NUM} are {factors(NUM)}")
     else:
-        print("INUMid input, enter a positive integer.")
+        print("Invalid input, enter a positive integer.")
