@@ -6,7 +6,7 @@
 """ Script for surface plotting """
 
 import numpy as np
-import matplotlib.pylab as plt
+import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 plt.style.use("classic")
@@ -25,7 +25,7 @@ delta = 0.1
 x = np.arange(-3., 3., delta)
 y = np.arange(-3., 3., delta)
 
-xval, yval = plt.meshgrid(x, y)
+xval, yval = np.meshgrid(x, y)
 zval = np.sin(xval) * np.cos(yval)
 
 fig = plt.figure()
