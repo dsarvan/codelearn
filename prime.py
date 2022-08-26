@@ -17,5 +17,6 @@ def prime(number):
     return True
 
 
-print(f"Check number(10,000,000) = {prime(10_000_000)}")
-print(f"Check number(10,000,019) = {prime(10_000_019)}")
+if __name__ == "__main__":
+    print(f"Check number(10,000,000) = {prime(10_000_000)}")
+    print(f"Check number(10,000,019) = {prime(10_000_019)}")
