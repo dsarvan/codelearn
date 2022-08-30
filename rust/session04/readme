@@ -1,0 +1,25 @@
+Rust
+    - source code stored in UTF-8
+    - by default unicode
+        - encoded in and enforced to be valid UTF-8
+    - direct slicing is dangerous, as it can result in invalid utf-8 which results in a panic
+        - use .chars() iterator!
+    - interesting crates
+        - for grapheme-clusters use unicode-segmentation crate
+        - use crate unicode-normalization (e.g. for comparisons)
+
+Strings
+	- are stored as a Vec<u8>
+	- guaranteed to be valid utf-8
+	- heap allocated and not null terminated
+
+&str
+    - slice &[u8] pointing to valid utf-8 sequence
+    - can be a view into a String
+
+utf-8
+uses 1 to 4 bytes per character
+    7bits from U+0000 to U+007F     = 0xxx_xxxx
+   11bits from U+0080 to U+07FF     = 110x_xxxx 10xx_xxxx
+   16bits from U+0800 to U+FFFF     = 1110_xxxx 10xx_xxxx 10xx_xxxx
+   21bits from U+1000 to U+10FFFF   = 1111_xxxx 10xx_xxxx 10xx_xxxx 10xx_xxxx
