@@ -1,0 +1,7 @@
+functions and closures
+* functions are declared with a name using the fn keyword
+    + can be nested
+    + nested functions are what python calls closures
+* closures are anonymous function-like construct you can store in a variable
+    + their practical use is mostly with iterators for e.g. map, filter, reduce
+    + python has lambda functions but they are limited to one statement on a single line
