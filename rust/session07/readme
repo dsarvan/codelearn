@@ -1,0 +1,6 @@
+structs (classes)
+    * Rust structs only hold data
+    * methods are implemented using traits
+    * Rust structs do not allow static attributes
+    * constructors follow idiomatic guidelines, no __init__ like magic method
+    * magic methods are supplied by traits
