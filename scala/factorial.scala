@@ -1,4 +1,4 @@
-object factorialprogram extends App {
+object factorial extends App {
     def factorial(n: BigInt): BigInt = 
         if (n == 0) 1 else n * factorial(n - 1)
 
