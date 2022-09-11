@@ -1,0 +1,14 @@
+pattern matching
+
+* basically an if/else-if or switch/case code block on steroids
+* practical use-cases
+    + easier to read code
+    + guarantee exhaustive matching for all possible e.g. enum variants
+    + unpacking optional values
+
+Python
+* planned for Python 3.10 (status October 2020)
+* PEP 622 - Structural Pattern Matching
+
+Rust
+* part of the language since the start
