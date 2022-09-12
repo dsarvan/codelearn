@@ -1,0 +1,5 @@
+Hashmap
+  * a.k.a. Hash-table, in python called dictionaries dict
+  * stores values by key
+  * key = any type that implements the Eq and Hash traits
+  * for "Hashmap literals" use crate maplit
