@@ -1,0 +1,4 @@
+Iterators
+* implement Iterator traits next() method
+    - uses associated type
+* documentation for map, skip, take, filter, sum, ...
