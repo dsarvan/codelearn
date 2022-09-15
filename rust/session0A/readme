@@ -1,0 +1,7 @@
+Error handling
+
+* Rust does not support Exceptions
+* uses Result<T, E> ro return value or error
+* or Option<T> for optional values
+* errors can bubble up this way too, user has to do it
+* builtin helpers are unwrap(), expect() and ?
