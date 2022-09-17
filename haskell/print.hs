@@ -5,4 +5,4 @@
 
 main :: IO()
 main = do
-    print "The quick brown fox jumps over the lazy dog"
+    putStrLn "The quick brown fox jumps over the lazy dog"
