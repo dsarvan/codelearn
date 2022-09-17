@@ -5,3 +5,9 @@ Error handling
 * or Option<T> for optional values
 * errors can bubble up this way too, user has to do it
 * builtin helpers are unwrap(), expect() and ?
+* do not use the failure crate (the author himself says so)
+    - reason: not based on std::error::Error
+    - suggested alternative by author anyhow or his new fehler crate
+    - for applications: eyre a fork of anyhow
+    - for libraries: thiserror
+* see Rust by Example
