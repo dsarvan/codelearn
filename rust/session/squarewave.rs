@@ -8,7 +8,7 @@ use ndarray::prelude::*;
 use std::f64::consts::PI;
 
 fn main() {
-    let xval = Array::linspace(-2.*PI, 2*PI, 5000);
+    let xval = Array::linspace(-2.*PI, 2.*PI, 5000);
     let square_wave = xval.mapv(f64::sin);
 
     for n in (3..10001).step_by(2) {
