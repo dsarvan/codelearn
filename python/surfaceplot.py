@@ -10,20 +10,15 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 plt.style.use("classic")
-plt.rcParams.update(
-    {
-        "font.family": "serif",
-        "font.size": 8,
-        "axes.labelsize": 10,
-        "axes.titlesize": 10,
-        "figure.titlesize": 10,
-    }
-)
-plt.rcParams["text.usetex"] = True
+plt.rc("text", usetex="True")
+plt.rc("pgf", texsystem="pdflatex")
+plt.rc("font", family="serif", weight="normal", size=10)
+plt.rc("axes", labelsize=12, titlesize=12)
+plt.rc("figure", titlesize=12)
 
-delta = 0.1
-x = np.arange(-3., 3., delta)
-y = np.arange(-3., 3., delta)
+DELTA = 0.1
+x = np.arange(-3.0, 3.0, DELTA)
+y = np.arange(-3.0, 3.0, DELTA)
 
 xval, yval = np.meshgrid(x, y)
 zval = np.sin(xval) * np.cos(yval)
