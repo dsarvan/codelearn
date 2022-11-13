@@ -23,15 +23,13 @@ int main(int argc, char **argv) {
 	int rproc = rank + 1;
 	if (rproc >= size) rproc = MPI_PROC_NULL;
 
-	//unsigned N = 10000000;
-	unsigned N = 5000;
+	unsigned N = 10000000;
 
 	double *xval = (double *) malloc(N * sizeof(double));
 
-	xval[0] = -2*PI;
-	for (size_t i = 0; i < N; i++)
-		//xval[i+1] = xval[i] + 1.2566371871969295e-06;
-		xval[i+1] = xval[i] + 0.002513776878247498;
+	xval[0] = -2*PI; xval[N-1] = 2*PI;
+	for (size_t i = 0; i < N-1; i++)
+		xval[i+1] = xval[i] + (xval[N-1] - xval[0])/(N-1);
 
 	int workloads[size];
 	for (size_t i = 0; i < size; i++)
