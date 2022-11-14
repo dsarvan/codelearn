@@ -24,7 +24,6 @@ int main(int argc, char **argv) {
 	if (rproc >= size) rproc = MPI_PROC_NULL;
 
 	unsigned N = 10000000;
-
 	double *xval = (double *) malloc(N * sizeof(double));
 
 	xval[0] = -2*PI; xval[N-1] = 2*PI;
