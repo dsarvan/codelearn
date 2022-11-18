@@ -22,13 +22,17 @@ int main() {
 	double *ex = (double *)malloc(ke * sizeof(double));
 	double *hy = (double *)malloc(ke * sizeof(double));
 
+	/* FDTD loop */
 	for (int ts = 1; ts <= nsteps; ts++) {
 
+		/* calculate the Ex field */
 		for (int k = 1; k < ke; k++)
 			ex[k] = ex[k] + 0.5 * (hy[k-1] - hy[k]);
 
+		/* put a Gaussian pulse in the middle */
 		ex[kc] = exp(-0.5 * pow(((t0 - ts)/spread), 2));
 
+		/* calculate the Hy field */
 		for (int k = 0; k < ke-1; k++)
 			hy[k] = hy[k] + 0.5 * (ex[k] - ex[k+1]);
 	}
@@ -53,14 +57,12 @@ void plotResults(int ke, double *ex, double *hy) {
 
 	fprintf(gnuplot, "set xlabel ''; set ylabel 'E_{x}'\n");
 	fprintf(gnuplot, "plot '-' w lines lc rgb '#000000'\n");
-	for (int k = 0; k < ke; k++)
-		fprintf(gnuplot, "%d %e\n", k, ex[k]);
+	for (int k = 0; k < ke; k++) fprintf(gnuplot, "%d %e\n", k, ex[k]);
 	fprintf(gnuplot, "e\n");
 
 	fprintf(gnuplot, "set xlabel 'FDTD cells'; set ylabel 'H_{y}'\n");
 	fprintf(gnuplot, "plot '-' w lines lc rgb '#000000'\n");
-	for (int k = 0; k < ke; k++) 
-		fprintf(gnuplot, "%d %e\n", k, hy[k]);
+	for (int k = 0; k < ke; k++) fprintf(gnuplot, "%d %e\n", k, hy[k]);
 	fprintf(gnuplot, "e\n");
 
 	fprintf(gnuplot, "unset multiplot\n");
