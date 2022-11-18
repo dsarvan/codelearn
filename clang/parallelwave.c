@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include <math.h>
 #include <mpi.h>
-#define PI M_PI
 
 int main(int argc, char **argv) {
 
@@ -21,7 +20,7 @@ int main(int argc, char **argv) {
 	unsigned N = 10000000;
 	double *xval = (double *) malloc(N * sizeof(double));
 
-	xval[0] = -2*PI; xval[N-1] = 2*PI;
+	xval[0] = -2*M_PI; xval[N-1] = 2*M_PI;
 	for (size_t i = 0; i < N-1; i++)
 		xval[i+1] = xval[i] + (xval[N-1] - xval[0])/(N-1);
 
@@ -51,20 +50,20 @@ int main(int argc, char **argv) {
 
 		FILE *gnuplot = popen("gnuplot -persist", "w");
 
-		fprintf(gnuplot, "set terminal pngcairo font 'Palatino,12'\n");
+		fprintf(gnuplot, "set terminal pngcairo font 'Times,12'\n");
 		fprintf(gnuplot, "set output 'parallelwave.png'\n");
 		fprintf(gnuplot, "set style line 1 linecolor rgb '#e50000'\n");
 		fprintf(gnuplot, "set linetype 1 linewidth 1\n");
 		fprintf(gnuplot, "set title 'Sine wave computed with mpi'\n");
 		fprintf(gnuplot, "set yrange [-1.5:1.5]; set grid; set key off\n");
 		fprintf(gnuplot, "set autoscale xfixmin; set autoscale xfixmax\n");
-		fprintf(gnuplot, "set xlabel '{/OpenSymbol x}' font ',11'\n");
-		fprintf(gnuplot, "set ylabel '{/OpenSymbol f(x)}' font ',11'\n");
-		fprintf(gnuplot, "set tics scale 0.5 font ',10'\n");
-		fprintf(gnuplot, "set xtics pi format '%.0Ppi'\n");
+		fprintf(gnuplot, "set xlabel 'x'; set ylabel 'f(x)' font ',12'\n");
+		fprintf(gnuplot, "set xtics pi format '%.0P\317\200'\n");
+		fprintf(gnuplot, "set tics scale 0.5 font ',11'; set xtics add ('0' 0)\n");
 		fprintf(gnuplot, "plot '-' with lines ls 1\n");
 		for (int i = 0; i < N; i++)
 			fprintf(gnuplot, "%e %e\n", xval[i], rwave[i]);
+		fprintf(gnuplot, "e\n");
 
 		pclose(gnuplot);
 	}
