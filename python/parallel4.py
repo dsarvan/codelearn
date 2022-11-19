@@ -35,6 +35,7 @@ def formatfunc(value, tick_number):
         N = N // 2
         return r"${0}\pi$".format(N)
 
+
 def main():
 
     comm = MPI.COMM_WORLD
@@ -55,7 +56,7 @@ def main():
 
     wave = np.sin(wave)
     comm.Gatherv(wave, rwave, 0)
-	
+
     if rank == 0:
         fig, ax = plt.subplots()
         ax.plot(xval, rwave, "r", lw=1, label=r"$sin(x)$")
@@ -68,6 +69,7 @@ def main():
         ax.set(xlabel="$x$", ylabel="$f(x)$")
         ax.set_title(r"Sine wave computed with mpi4py")
         plt.savefig("parallel4.png", dpi=100)
+
 
 if __name__ == "__main__":
     main()
