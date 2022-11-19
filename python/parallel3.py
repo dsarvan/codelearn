@@ -35,6 +35,7 @@ def formatfunc(value, tick_number):
         N = N // 2
         return r"${0}\pi$".format(N)
 
+
 def main():
 
     comm = MPI.COMM_WORLD
