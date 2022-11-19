@@ -73,5 +73,6 @@ def main():
         ax.set_title(r"Sine wave computed with mpi4py")
         plt.savefig("parallel2.png", dpi=100)
 
+
 if __name__ == "__main__":
     main()
