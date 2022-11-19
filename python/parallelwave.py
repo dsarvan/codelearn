@@ -58,14 +58,9 @@ def main():
     wave = np.sin(xval[sload:eload])
 
     rwave = np.zeros(len(xval), dtype=np.float64)
-    if rank > 0:
-        rwave[sload:eload] = wave
-        comm.Send(rwave[sload:eload], dest=0)
-    else:
-        rwave[sload:eload] = wave
-        for n in range(1, size):
-            comm.Recv(rwave[n * eload :], source=n)
+    comm.Gatherv(wave, rwave, 0)
 
+    if rank == 0:
         fig, ax = plt.subplots()
         ax.plot(xval, rwave, "r", lw=1, label=r"$sin(x)$")
         ax.grid(True, which="both")
