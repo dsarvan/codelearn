@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# File: parallel.py
+# File: parallel1.py
 # Name: D.Saravanan
 # Date: 25/10/2022
 
@@ -45,8 +45,8 @@ def main():
     N = 10000000
 
     xval = np.linspace(-2 * np.pi, 2 * np.pi, N)
-    workloads = [len(xval) // size for _ in range(size)]
 
+    workloads = [len(xval) // size for _ in range(size)]
     for n in range(len(xval) % size):
         workloads[n] += 1
 
@@ -76,7 +76,7 @@ def main():
         ax.set(xlim=(-2 * np.pi, 2 * np.pi), ylim=(-1.5, 1.5))
         ax.set(xlabel="$x$", ylabel="$f(x)$")
         ax.set_title(r"Sine wave computed with mpi4py")
-        plt.savefig("parallel.png", dpi=100)
+        plt.savefig("parallel1.png", dpi=100)
 
 
 if __name__ == "__main__":
