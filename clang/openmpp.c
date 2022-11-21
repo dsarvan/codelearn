@@ -12,12 +12,14 @@ int main(int argc, char *argv[]) {
 	int nthreads, thread_id;
 
 	printf("Goodbye slow serial world and Hello OpenMP!\n");
-	#pragma omp parallel 
+
+	/* Adding a parallel region */
+	#pragma omp parallel /* Spawn threads */
 	{
 		int nthreads = omp_get_num_threads();
 		int thread_id = omp_get_thread_num();
 		printf("I have %d thread(s) and my thread id is %d\n", nthreads, thread_id);
-	}
+	} /* Implied Barrier */
 
 	return 0;
 }
