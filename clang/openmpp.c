@@ -9,8 +9,6 @@
 
 int main(int argc, char *argv[]) {
 
-	int nthreads, thread_id;
-
 	printf("Goodbye slow serial world and Hello OpenMP!\n");
 
 	/* Adding a parallel region */
