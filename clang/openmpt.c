@@ -1,4 +1,4 @@
-/* File: openmpp.c
+/* File: openmpt.c
  * Name: D.Saravanan
  * Date: 20/11/2022
  * A parallel OpenMP program that implements multiple threads
