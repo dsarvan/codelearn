@@ -21,12 +21,17 @@ int main(int argc, char *argv[]) {
 	struct timespec tstart;
 	double time_sum = 0.0;
 
+	/* Initialization pragma so first touch
+	gets memory in the proper location */
+	#pragma omp parallel for
 	for (int i=0; i<N; i++) {
 		a[i] = 1.0;
 		b[i] = 2.0;
 	}
 
 	cpu_timer_start(&tstart);
+	/* OpenMP for pragma to distribute work
+	for vector add loop across threads */
 	#pragma omp parallel for
 	for (int i=0; i<N; i++)
 		c[i] = a[i] + b[i];
