@@ -1,7 +1,7 @@
 /* File: streamtriadp.c
  * Name: D.Saravanan
  * Date: 22/11/2022
- * Loop-level OpenMP threading of the stream triad
+ * Loop-level OpenMP threading and vectorization of the stream triad
 */
 
 #include <stdio.h>
@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 
 	/* Initialization pragma so first touch
 	gets memory in the proper location */
-	#pragma omp parallel for
+	#pragma omp parallel for simd
 	for (int i = 0; i < N; i++) {
 		a[i] = 1.0;
 		b[i] = 2.0;
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	cpu_timer_start(&tstart);
 	/* OpenMP for pragma to distribute work
 	for vector add loop across threads */
-	#pragma omp parallel for
+	#pragma omp parallel for simd
 	for (int i = 0; i < N; i++) {
 		c[i] = a[i] + scalar*b[i];
 	}
