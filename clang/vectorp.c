@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	cpu_timer_start(&tstart);
 	/* OpenMP for pragma to distribute work
 	for vector add loop across threads */
-	#pragma omp parallel for simd
+	#pragma omp simd
 	for (int i=0; i<N; i++)
 		c[i] = a[i] + b[i];
 	time_sum += cpu_timer_stop(tstart);
