@@ -1,7 +1,7 @@
 /* File: streamtriads.c
  * Name: D.Saravanan
  * Date: 22/11/2022
- * Program for stream triad
+ * Program for auto vectorization of stream triad
 */
 
 #include <stdio.h>
@@ -16,15 +16,17 @@ int main(int argc, char *argv[]) {
 	struct timespec tstart;
 	double scalar = 3.0, time_sum = 0.0;
 
+	/* Initializes data and array */
 	for (int i = 0; i < N; i++) {
 		a[i] = 1.0;
 		b[i] = 2.0;
 	}
 
 	cpu_timer_start(&tstart);
-	for (int i = 0; i < N; i++) {
+	/* Stream triad loop has three
+	operands with a multiply and an add */
+	for (int i = 0; i < N; i++)
 		c[i] = a[i] + scalar*b[i];
-	}
 	time_sum += cpu_timer_stop(tstart);
 
 	printf("Runtime is %lf ms\n", time_sum);
