@@ -3,22 +3,19 @@
 # Name: D.Saravanan
 # Date: 16/09/2022
 
+""" Fractional Calculus """
+
 import numpy as np
 import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 
 plt.style.use("classic")
-plt.rcParams["text.usetex"] = True
-plt.rcParams["pgf.texsystem"] = "pdflatex"
-plt.rcParams.update(
-    {
-        "font.family": "serif",
-        "font.size": 8,
-        "axes.labelsize": 10,
-        "axes.titlesize": 10,
-        "figure.titlesize": 10,
-    }
-)
+plt.rc("text", usetex="True")
+plt.rc("pgf", texsystem="pdflatex")
+plt.rc("font", family="serif", weight="normal", size=10)
+plt.rc("axes", labelsize=12, titlesize=12)
+plt.rc("figure", titlesize=12)
+
 
 x = np.linspace(0, 10, 1000, endpoint=True)
 y = x
@@ -34,11 +31,22 @@ ax.plot(x, x**0, c="#014D4E", lw=1)
 ax.plot(x, x**1, c="#A88905", lw=1)
 ax.plot(x, x**2, c="#960056", lw=1)
 ax.plot(x, x**3, c="#856798", lw=1)
+ax.annotate("$x^{0}$", xytext=(4.8, 1.1), xy=(4.8, 1.1))
+ax.annotate("$x^{1}$", xytext=(4.8, 5.0), xy=(4.8, 5.0))
+ax.annotate("$x^{2}$", xytext=(2.9, 9.6), xy=(2.9, 9.6))
+ax.annotate("$x^{3}$", xytext=(1.9, 9.6), xy=(1.9, 9.6))
 ax.spines[["right", "top"]].set_visible(False)
-ax.tick_params(axis="both", right=False, top=False)
+ax.xaxis.set_major_locator(plt.MultipleLocator(1))
+ax.yaxis.set_major_locator(plt.MultipleLocator(1))
+ax.xaxis.set_minor_locator(plt.MultipleLocator(0.5))
+ax.yaxis.set_minor_locator(plt.MultipleLocator(0.5))
+ax.xaxis.set_minor_formatter(plt.ScalarFormatter())
+ax.yaxis.set_minor_formatter(plt.ScalarFormatter())
+ax.tick_params(axis="both", which="both", right=False, top=False)
 ax.tick_params(which="major", direction="inout")
 ax.set(xlim=(0, 5), ylim=(0, 10))
-ax.set_title(r"Fractional Calculus", pad=20)
+ax.set(xlabel="$x$", ylabel="$x^{n}$")
+ax.set_title(r"$Fractional\ Calculus$", pad=20)
 
 with writer.saving(fig, "fractional.mp4", dpi=200):
 
@@ -49,5 +57,5 @@ with writer.saving(fig, "fractional.mp4", dpi=200):
 		y = x**n
 
 		line1.set_ydata(y)
-		nval_text.set_text(f"n = {round(n, 3)}")
+		nval_text.set_text(f"$n = {round(n, 3)}$")
 		writer.grab_frame()
