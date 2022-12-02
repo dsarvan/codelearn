@@ -31,10 +31,10 @@ ax.plot(x, x**0, c="#014D4E", lw=1)
 ax.plot(x, x**1, c="#A88905", lw=1)
 ax.plot(x, x**2, c="#960056", lw=1)
 ax.plot(x, x**3, c="#856798", lw=1)
-ax.annotate("$x^{0}$", xytext=(4.8, 1.1), xy=(4.8, 1.1))
-ax.annotate("$x^{1}$", xytext=(4.8, 5.0), xy=(4.8, 5.0))
-ax.annotate("$x^{2}$", xytext=(2.9, 9.6), xy=(2.9, 9.6))
-ax.annotate("$x^{3}$", xytext=(1.9, 9.6), xy=(1.9, 9.6))
+ax.annotate("$x^{0}$", xytext=(4.80, 1.1), xy=(4.80, 1.1))
+ax.annotate("$x^{1}$", xytext=(4.80, 5.0), xy=(4.80, 5.0))
+ax.annotate("$x^{2}$", xytext=(2.95, 9.6), xy=(2.95, 9.6))
+ax.annotate("$x^{3}$", xytext=(1.95, 9.6), xy=(1.95, 9.6))
 ax.spines[["right", "top"]].set_visible(False)
 ax.xaxis.set_major_locator(plt.MultipleLocator(1))
 ax.yaxis.set_major_locator(plt.MultipleLocator(1))
@@ -48,7 +48,7 @@ ax.set(xlim=(0, 5), ylim=(0, 10))
 ax.set(xlabel="$x$", ylabel="$x^{n}$")
 ax.set_title(r"$Fractional\ Calculus$", pad=20)
 
-with writer.saving(fig, "fractional.mp4", dpi=200):
+with writer.saving(fig, "fractional.mp4", dpi=600):
 
 	line1.set_ydata(y)
 	writer.grab_frame()
