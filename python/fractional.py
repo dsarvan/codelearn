@@ -48,7 +48,7 @@ ax.set(xlim=(0, 5), ylim=(0, 10))
 ax.set(xlabel="$x$", ylabel="$x^{n}$")
 ax.set_title(r"$Fractional\ Calculus$", pad=20)
 
-with writer.saving(fig, "fractional.mp4", dpi=600):
+with writer.saving(fig, "fractional.mp4", dpi=300):
 
 	line1.set_ydata(y)
 	writer.grab_frame()
