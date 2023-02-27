@@ -21,6 +21,7 @@ sys.stdout.write("rank: %d\n" % (rank))
 
 # the number of MPI processes
 size = comm.Get_size()
+sys.stdout.write("size: %d\n" % (size))
 
 # the hostname on which the current process is running
 name = MPI.Get_processor_name()
