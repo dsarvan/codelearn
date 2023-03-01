@@ -23,6 +23,7 @@ rank = MPI.Comm_rank(comm)
 
 # the number of processes involved in communicator
 size = MPI.Comm_size(comm)
+@printf("size: %d\n", size)
 
 #name = MPI.processor_name(comm)
 
