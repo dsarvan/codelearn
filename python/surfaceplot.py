@@ -7,7 +7,6 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 
 plt.style.use("classic")
 plt.rc("text", usetex="True")
@@ -24,9 +23,9 @@ xval, yval = np.meshgrid(x, y)
 zval = np.sin(xval) * np.cos(yval)
 
 fig = plt.figure()
-ax = Axes3D(fig)
-ax.plot_surface(xval, yval, zval)
-ax.plot_wireframe(xval, yval, zval, color="r")
+ax = plt.axes(projection="3d")
+ax.plot_surface(xval, yval, zval, cmap="viridis")
+ax.plot_wireframe(xval, yval, zval, color="k")
 ax.set(xlabel="x", ylabel="y", zlabel="z")
 ax.set_title(r"Surface plot")
 plt.savefig("surfaceplot.png")
