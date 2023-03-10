@@ -35,6 +35,8 @@ double trapezoid(int N, int rank, int size, double a, double b) {
 	for (size_t i = 0; i < wload[rank] - 1; i++)
 		f[i] = sin(x[i]);
 
+	free(x);
+
 	double sum(double f[], int nval) {
 		 double sval = 0.0;
 		for (size_t i = 1; i <= nval; i++)
@@ -46,7 +48,6 @@ double trapezoid(int N, int rank, int size, double a, double b) {
 	ltrap = (h/2) * (f[0] + 2 * sum(f, wload[rank] - 1) + f[wload[rank]]);
 	MPI_Reduce(&ltrap, &trap, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
-	free(x);
 	free(f);
 
 	if (rank == 0) {
