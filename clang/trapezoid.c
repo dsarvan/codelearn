@@ -27,12 +27,12 @@ double trapezoid(int N, int rank, int size, double a, double b) {
 	double lb = la + wload[rank] * h;
 
 	double *x = (double *) calloc(wload[rank] + 1, sizeof(*x));
-	x[0] = la; x[wload[rank] - 1] = lb;
-	for (size_t i = 0; i < wload[rank] - 1; i++)
-		x[i+1] = x[i] + (x[wload[rank] - 1] - x[0])/(wload[rank] - 1);
+	x[0] = la; x[wload[rank]] = lb;
+	for (size_t i = 1; i < wload[rank]; i++)
+		x[i] = x[i-1] + (x[wload[rank]] - x[0])/(wload[rank]);
 	
 	double *f = (double *) calloc(wload[rank] + 1, sizeof(*f));
-	for (size_t i = 0; i < wload[rank] - 1; i++)
+	for (size_t i = 0; i <= wload[rank]; i++)
 		f[i] = sin(x[i]);
 
 	free(x);
@@ -40,7 +40,7 @@ double trapezoid(int N, int rank, int size, double a, double b) {
 	double sum(double f[], int nval) {
 		 double sval = 0.0;
 		for (size_t i = 1; i <= nval; i++)
-			sval = sval + f[i];
+			sval += f[i];
 		return sval;
 	}
 
