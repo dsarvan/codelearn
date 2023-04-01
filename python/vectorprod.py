@@ -10,14 +10,12 @@ import pycuda.autoinit
 import pycuda.driver as drv
 from pycuda.compiler import SourceModule
 
-mod = SourceModule(
-    """
+mod = SourceModule("""
 __global__ void vecprod(float *a, float *b, float *c) {
 	int i = threadIdx.x;
 	c[i] = a[i] * b[i];
 }
-"""
-)
+""")
 
 if __name__ == "__main__":
     N = 1024  # Maximum threads per block (Tesla T4)
