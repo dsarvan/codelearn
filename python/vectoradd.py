@@ -25,6 +25,6 @@ if __name__ == "__main__":
     c = np.zeros_like(a)
 
     func = mod.get_function("vecadd")
-    func(drv.In(a), drv.In(b), drv.Out(c), block=(N, 1, 1), grid=(1, 1, 1))
+    func(drv.In(a), drv.In(b), drv.Out(c), block=(N, 1, 1), grid=(1, 1))
 
     print(c - (a + b))
