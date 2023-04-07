@@ -9,12 +9,12 @@
 __global__ void vecadd(float *a, float *b, float *c, int N) {
     int i = blockDim.x * blockIdx.x + threadIdx.x;
     if (i < N)
-	c[i] = a[i] + b[i];
+	    c[i] = a[i] + b[i];
 }
 
 void initialize(float *a, int N) {
     for (size_t i = 0; i < N; i++)
-	a[i] = rand() % 100;
+	    a[i] = rand() % 100;
 }
 
 int main() {
@@ -42,6 +42,7 @@ int main() {
     /* force host to wait on the completion of the kernel */
     cudaDeviceSynchronize();
 
+    /* free device memory for a, b, c */
     cudaFree(a); cudaFree(b); cudaFree(c);
     return 0;
 }
