@@ -11,17 +11,17 @@ __global__ void matprod(float *a, float *b, float *c, int N) {
     int j = blockDim.x * blockIdx.x + threadIdx.x;
 
     if (i < N && j < N) {
-	float res = 0;
-	for (size_t n; n < N; n++)
-	    res += a[i * N + n] * b[n * N + j];
+        float res = 0;
+        for (size_t n; n < N; n++)
+            res += a[i * N + n] * b[n * N + j];
 
-	c[i * N + j] = res;
+        c[i * N + j] = res;
     }
 }
 
 void initialize(float *m, int N) {
     for (size_t i = 0; i < N; i++)
-	m[i] = rand() % 100;
+	    m[i] = rand() % 100;
 }
 
 int main() {
@@ -52,6 +52,7 @@ int main() {
     /* force host to wait on the completion of the kernel */
     cudaDeviceSynchronize();
 
+    /* free device memory for a, b, c */
     cudaFree(a); cudaFree(b); cudaFree(c);
     return 0;
 }
