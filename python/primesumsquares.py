@@ -8,7 +8,7 @@
 from math import sqrt
 
 
-def sumsquares(nval):
+def sumsquares(nval: int) -> int:
     """An odd prime number p, the sum of
     two squares if and only if it leaves
     the remainder 1 on division by 4."""
@@ -17,9 +17,9 @@ def sumsquares(nval):
     return 0
 
 
-def prime(number):
+def prime(number: int) -> int:
     """function to check prime"""
-    sqrt_number = sqrt(number)
+    sqrt_number: float = sqrt(number)
     for i in range(2, int(sqrt_number) + 1):
         if number % i == 0:
             return 0
@@ -27,6 +27,6 @@ def prime(number):
 
 
 if __name__ == "__main__":
-    N = 100
+    N: int = 100
     for n in range(2, N):
         prime(n)
