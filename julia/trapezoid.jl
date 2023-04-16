@@ -13,7 +13,7 @@ const rank = MPI.Comm_rank(comm)
 const size = MPI.Comm_size(comm)
 
 
-function trapezoid(a, b, N)
+function trapezoid(a::Float64, b::Float64, N::Int64)::Float64
     """numerical integration"""
 
     wload = [trunc(Int, N / size) for _ in range(1, size)]
@@ -30,22 +30,24 @@ function trapezoid(a, b, N)
     x = LinRange(la, lb, wload[rank+1] + 1)
     f = sin.(x)  # integration function
 
-    trap = (h/2) * (f[1] + 2 * sum(f[2:wload[rank+1]]) + f[wload[rank+1]+1])
+    trap = (h / 2) * (f[1] + 2 * sum(f[2:wload[rank+1]]) + f[wload[rank+1]+1])
     trap = MPI.Reduce(trap, +, root = 0, comm)
 
     if rank == 0
         return trap
     end
+
+    return 0
 end
 
 
 function main()
     # integral parameters
-    a = 0.0  # left endpoint
-    b = pi  # right endpoint
-    n = 100000000  # number of trapezoids
+    a::Float64 = 0.0  # left endpoint
+    b::Float64 = pi  # right endpoint
+    n::Int64 = 100000000  # number of trapezoids
 
-    integral = trapezoid(a, b, n)
+    integral::Float64 = trapezoid(a, b, n)
     if rank == 0
         println(integral)
     end
