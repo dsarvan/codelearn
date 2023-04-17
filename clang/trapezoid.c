@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include <math.h>
 #include <mpi.h>
 
@@ -46,7 +47,7 @@ double trapezoid(int N, int rank, int size, double a, double b) {
     }
 
     double ltrap, trap;
-    ltrap = (h / 2) * (f[0] + 2 * sum(f, wload[rank] - 1) + f[wload[rank]]);
+    ltrap = (h/2) * (f[0] + 2 * sum(f, wload[rank] - 1) + f[wload[rank]]);
     MPI_Reduce(&ltrap, &trap, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
     free(f);
@@ -54,6 +55,8 @@ double trapezoid(int N, int rank, int size, double a, double b) {
     if (rank == 0) {
 	return trap;
     }
+
+    return 0;
 }
 
 
@@ -72,6 +75,7 @@ int main(int argc, char **argv) {
 
     double integral = trapezoid(n, rank, size, a, b);
     if (rank == 0) {
+	assert(integral != 0);
 	printf("%f\n", integral);
     }
 
