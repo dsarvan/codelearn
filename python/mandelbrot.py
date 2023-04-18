@@ -5,8 +5,6 @@
 
 """ Script for the Mandelbrot set """
 
-from time import time
-
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -29,7 +27,6 @@ def mandelbrot(rmin, rmax, imin, imax):
     imag_vals = np.linspace(imin, imax, height)
 
     # we will represent members as 1, non-members as 0.
-
     mandelbrot_graph = np.ones((height, width), dtype=np.float32)
 
     for x in range(width):
@@ -48,18 +45,8 @@ def mandelbrot(rmin, rmax, imin, imax):
 
 
 if __name__ == "__main__":
-    t1 = time()
     mandel = mandelbrot(-2, 2, -2, 2)
-    t2 = time()
-    mandel_time = t2 - t1
 
-    t1 = time()
-    fig = plt.figure(1)
-    plt.imshow(mandel, extent=(-2, 2, -2, 2))
+    fig, ax = plt.subplots()
+    ax.imshow(mandel, extent=(-2, 2, -2, 2))
     plt.savefig("mandelbrot.png", dpi=fig.dpi)
-    t2 = time()
-
-    dump_time = t2 - t1
-
-    print(f"It took {mandel_time} seconds to calculate the Mandelbrot graph.")
-    print(f"It took {dump_time} seconds to dump the image.")
