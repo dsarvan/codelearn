@@ -11,23 +11,19 @@
 int **mandelbrot(int rmin, int rmax, int imin, int imax) {
     /* an algorithm to generate an image of the Mandelbrot set */
 
-    int width = 512;
-    int height = 512;
     int max_iters = 256;
     double upper_bound = 2.5;
+    int width = 512; int height = 512;
 
     double *rval = (double *) calloc(width, sizeof(double));
-    rval[0] = rmin;
-    rval[width - 1] = rmax;
+    rval[0] = rmin; rval[width - 1] = rmax;
     for (size_t i = 0; i < width - 1; i++)
 	rval[i + 1] = rval[i] + (rval[width - 1] - rval[0]) / (width - 1);
 
     double *ival = (double *) calloc(height, sizeof(double));
-    ival[0] = imin;
-    ival[height - 1] = imax;
+    ival[0] = imin; ival[height - 1] = imax;
     for (size_t i = 0; i < height - 1; i++)
-	ival[i + 1] =
-	    ival[i] + (ival[height - 1] - ival[0]) / (height - 1);
+	ival[i + 1] = ival[i] + (ival[height - 1] - ival[0]) / (height - 1);
 
     /* we will represent members as 0, non-members as 1 */
     int **mandelbrot_graph = NULL;
@@ -51,8 +47,7 @@ int **mandelbrot(int rmin, int rmax, int imin, int imax) {
 	}
     }
 
-    free(rval);
-    free(ival);
+    free(rval); free(ival);
 
     return mandelbrot_graph;
 
@@ -67,16 +62,17 @@ int main() {
     int **mandel = mandelbrot(-2, 2, -2, 2);
 
     FILE *gnuplot = popen("gnuplot -persist", "w");
-    fprintf(gnuplot, "set terminal pngcairo font 'Times,12'\n");
+    fprintf(gnuplot, "set colorsequence classic\n");
     fprintf(gnuplot, "set output 'mandelbrot.png'\n");
-    fprintf(gnuplot, "set xrange[-2:2]; set yrange[-2:2]\n");
-    fprintf(gnuplot, "set palette defined (0 'blue', 1 'white')\n");
+    fprintf(gnuplot, "set terminal pngcairo font 'Times,12'\n");
+    fprintf(gnuplot, "set autoscale xfix; set autoscale yfix\n");
     fprintf(gnuplot, "set cbrange [0:1]; set autoscale cbfix\n");
-    fprintf(gnuplot, "plot '-' matrix with image notitle\n");
+    fprintf(gnuplot, "set palette defined (0 'white', 1 'blue')\n");
+    fprintf(gnuplot, "plot '-' matrix with image pixels notitle\n");
     for (int i = 0; i < 512; i++) {
-	for (int j = 0; j < 512; j++) {
-	    fprintf(gnuplot, "%e\n", mandel[i][j]);
-	}
+	for (int j = 0; j < 512; j++)
+	    fprintf(gnuplot, "%d ", mandel[i][j]);
+	fprintf(gnuplot, "\n");
     }
     fprintf(gnuplot, "e\n");
     pclose(gnuplot);
