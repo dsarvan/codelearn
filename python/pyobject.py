@@ -103,7 +103,7 @@ print(Employee.employeeName(emp1))
 print(Employee.employeeName(emp2))
 
 # emp1 which is an instance then call the method with
-# emp1.employeeName() we  don't need to pass in self
+# emp1.employeeName() we don't need to pass in self
 
 # but when we call the method on the class we do have
 # to pass in the instance and that get pass in as self
@@ -261,3 +261,221 @@ emp1 = Employee("Edward", "Teller", 4000)
 emp2 = Employee("Corey", "Schafer", 5000)
 
 print(Employee.employee_num)
+
+"""
+regular methods, class methods and static methods:
+
+* regular methods in a class automatically take the instance as the first
+  argument and by convention we call this 'self'
+
+* class methods take the class as the first argument and by convention we call
+  this 'cls'
+
+* to turn a regular method into a class method add @classmethod decorator to a
+  regular method
+
+* decorator alters the functionality of a method
+
+"""
+
+class Employee:
+
+	employee_num = 0
+	raise_amount = 1.04
+
+	def __init__(self, fname, lname, stock):
+		self.fname = fname
+		self.lname = lname
+		self.email = fname + lname + '@mail.com'
+		self.stock = stock
+
+		Employee.employee_num += 1
+
+	def employeeName(self):
+		return f"{self.fname} {self.lname}"
+
+	def applyRaise(self):
+		self.stock = int(self.stock * self.raise_amount)
+
+	@classmethod
+	def setRaiseAmount(cls, amount):
+		cls.raise_amount = amount
+
+
+emp1 = Employee("Edward", "Teller", 4000)
+emp2 = Employee("Corey", "Schafer", 5000)
+
+print(emp1.raise_amount)
+print(emp2.raise_amount)
+print(Employee.raise_amount)
+
+# change raise_amount from 4% to 5% by
+# using setRaiseAmount() class method
+Employee.setRaiseAmount(1.05)
+
+print(emp1.raise_amount)
+print(emp2.raise_amount)
+print(Employee.raise_amount)
+
+# running Employee.setRaiseAmount(1.05) is equivalent
+# to setting Employee.raise_amount = 1.05
+
+# we can run class methods from instances as well but that doesn't make lot of
+# sense and we don't people doing it but to show what that look like
+
+# run the class method using the instance
+emp1.setRaiseAmount(1.06)
+
+print(emp1.raise_amount)
+print(emp2.raise_amount)
+print(Employee.raise_amount)
+
+# running the class method from the instance still changes the class variable
+# and sets all of the class variable and both instances amount to that 6% that
+# we passed in
+
+# we can use these class methods in order to provide multiple ways of creating
+# our instances
+
+# example of using class methods as alternative constructors
+
+emp1str = 'Edward-Teller-4000'
+emp2str = 'Corey-Schafer-5000'
+emp3str = 'Richard-Fermi-7000'
+
+fname, lname, stock = emp1str.split('-')
+
+emp1 = Employee(fname, lname, stock)
+
+print(emp1.email)
+print(emp1.stock)
+
+# if above is the common use case of how someone using this class than we don't
+# want them to parse these strings every time they want to create a new employee
+# so let just create an alternative constructor that allows them to pass in the
+# string and then we create the employee for them
+
+# use 'from' by convention for the method using as an alternative constructor
+
+class Employee:
+
+	employee_num = 0
+	raise_amount = 1.04
+
+	def __init__(self, fname, lname, stock):
+		self.fname = fname
+		self.lname = lname
+		self.email = fname + lname + '@mail.com'
+		self.stock = stock
+
+		Employee.employee_num += 1
+
+	def employeeName(self):
+		return f"{self.fname} {self.lname}"
+
+	def applyRaise(self):
+		self.stock = int(self.stock * self.raise_amount)
+
+	@classmethod
+	def setRaiseAmount(cls, amount):
+		cls.raise_amount = amount
+
+	@classmethod # use this method as an alternative constructor
+	def fromString(cls, empstr):
+		fname, lname, stock = empstr.split('-')
+		return cls(fname, lname, stock)
+
+
+emp1str = 'Edward-Teller-4000'
+emp2str = 'Corey-Schafer-5000'
+emp3str = 'Richard-Fermi-7000'
+
+emp1 = Employee.fromString(emp1str)
+emp2 = Employee.fromString(emp2str)
+emp3 = Employee.fromString(emp3str)
+
+print(emp1.email)
+print(emp1.stock)
+
+# Note: look at datetime module in python to better
+#       understand an alternative constructor
+
+
+"""
+static method:
+
+* regular methods automatically pass the instance as the first argument and we
+  call that 'self' by convention
+
+* class methods automatically pass the class as the first argument and we call
+  that 'cls' by convention
+
+* static methods don't pass anything automatically (instance/class)
+
+* static methods behave just like regular functions except we include them in
+  classes because they have some logical connection with the class
+
+"""
+
+# sometimes people write regular methods or class methods that actually should
+# be static methods and usually a give away that the method should be static
+# method is if you don't access the instance or the class anywhere within the
+# function
+
+# for example consider a simple function that would take in a date and return
+# whether or not that was a work day, so that has a logical connection to our
+# Employee class but it doesn't actually depend on any specific instance or
+# class variable
+
+# in python, dates have these week day methods where Monday == 0 and Sunday == 6
+
+
+class Employee:
+
+	employee_num = 0
+	raise_amount = 1.04
+
+	def __init__(self, fname, lname, stock):
+		self.fname = fname
+		self.lname = lname
+		self.email = fname + lname + '@mail.com'
+		self.stock = stock
+
+		Employee.employee_num += 1
+
+	def employeeName(self):
+		return f"{self.fname} {self.lname}"
+
+	def applyRaise(self):
+		self.stock = int(self.stock * self.raise_amount)
+
+	@classmethod
+	def setRaiseAmount(cls, amount):
+		cls.raise_amount = amount
+
+	@classmethod # use this method as an alternative constructor
+	def fromString(cls, empstr):
+		fname, lname, stock = empstr.split('-')
+		return cls(fname, lname, stock)
+
+	@staticmethod
+	def isWorkday(day):
+		"""function to return the day is work day or not"""
+		return False if day.weekday() in (5, 6) else True
+
+
+emp1 = Employee("Edward", "Teller", 4000)
+emp2 = Employee("Corey", "Schafer", 5000)
+
+import datetime
+date = datetime.date(2023, 4, 30)
+
+print(Employee.isWorkday(date))
+
+"""
+Summary:
+* we learn the difference between regular instance methods, class methods which
+  can also be used as an alternative constructors and static methods which don't
+  operate on the instance or the class
+
+"""
