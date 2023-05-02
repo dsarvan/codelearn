@@ -477,5 +477,343 @@ Summary:
 * we learn the difference between regular instance methods, class methods which
   can also be used as an alternative constructors and static methods which don't
   operate on the instance or the class
+"""
 
 """
+inheritance and creating subclasses:
+
+* inheritance allows us to inherit attributes and methods from a parent class
+
+* if we create subclasses and get all the functionality of our parent class and
+  then we can overwrite or add completely new functionality without affecting
+  the parent class in any way
+
+"""
+
+class Employee:
+
+	raise_amount = 1.04
+
+	def __init__(self, fname, lname, stock):
+		self.fname = fname
+		self.lname = lname
+		self.email = fname + lname + '@mail.com'
+		self.stock = stock
+
+	def employeeName(self):
+		return f"{self.fname} {self.lname}"
+
+	def applyRaise(self):
+		self.stock = int(self.stock * self.raise_amount)
+
+
+emp1 = Employee("Edward", "Teller", 4000)
+emp2 = Employee("Corey", "Schafer", 5000)
+
+
+# let create different types of employees, for example: developers and managers
+# these will be good candidates for subclasses because both developers and managers
+# have fname, lname, email and stock since these are already present in Employee
+# class so instead of copying all these code in Developer and Manager subclasses we
+# can just reuse that code by inheriting from the class Employee
+
+# create subclass for Developer
+
+class Employee:
+
+	raise_amount = 1.04
+
+	def __init__(self, fname, lname, stock):
+		self.fname = fname
+		self.lname = lname
+		self.email = fname + lname + '@mail.com'
+		self.stock = stock
+
+	def employeeName(self):
+		return f"{self.fname} {self.lname}"
+
+	def applyRaise(self):
+		self.stock = int(self.stock * self.raise_amount)
+
+
+class Developer(Employee):
+	pass
+
+# class <subclassName>(from what class we inherit):
+# simply inheriting from the Employee class we inherited all of its
+# functionality (attributes and methods) of Employee class
+
+# create two new Employees
+dev1 = Employee("Edward", "Teller", 4000)
+dev2 = Employee("Corey", "Schafer", 5000)
+
+print(dev1.email)
+print(dev2.email)
+
+# create two new Developers and pass in same information
+dev1 = Developer("Edward", "Teller", 4000)
+dev2 = Developer("Corey", "Schafer", 5000)
+
+print(dev1.email)
+print(dev2.email)
+
+# now if we rerun this and print out the emails we can see that two developers
+# created and access the attributes that where actually set in parent Employee
+# class
+
+# when we instanted our developers, it first looked in Developer class for the
+# __init__ method where it not find since its empty so what python is doing then
+# is walk up the chain of inheritance until it find what its looking for, now
+# the chain is called the method resolution order
+
+print(help(Developer))
+
+# when we run help on Developer class we get all kinds of information here
+# basically the method resolution order are the places where python searches for
+# attributes and methods, so when we created two new developers it first looked
+# in our Developer class for the __init__ method and when it didn't find it
+# there then it went to the Employee class and it found it there and executed
+# suppose if not found in the Employee class then the last place it looked is
+# the builtins.object class since every class in python inherit from the
+# builtins.object
+
+print(dev1.stock)
+dev1.applyRaise()
+print(dev1.stock)
+
+# let say that developer raise amount be 10%
+
+class Employee:
+
+	raise_amount = 1.04
+
+	def __init__(self, fname, lname, stock):
+		self.fname = fname
+		self.lname = lname
+		self.email = fname + lname + '@mail.com'
+		self.stock = stock
+
+	def employeeName(self):
+		return f"{self.fname} {self.lname}"
+
+	def applyRaise(self):
+		self.stock = int(self.stock * self.raise_amount)
+
+
+class Developer(Employee):
+	raise_amount = 1.10
+
+
+dev1 = Developer("Edward", "Teller", 4000)
+dev2 = Developer("Corey", "Schafer", 5000)
+
+print(dev1.stock)
+dev1.applyRaise()
+print(dev1.stock)
+
+# by changing raise_amount attribute in subclass Developer it
+# don't have effect in Employee class raise_amount attribute
+# we can make these changes to subclasses without worrying
+# about breaking anything in parent class
+
+# sometimes we want to initiate subclasses with more information than parent
+# class handle, so let say when we create developer instance we also want to
+# pass in their main programming language as an attribute but currently Employee
+# class only accepts fname, lname and stock so if we also want to pass in
+# programming language there then to get around this we have to give Developer
+# class its own __init__ method
+
+class Employee:
+
+	raise_amount = 1.04
+
+	def __init__(self, fname, lname, stock):
+		self.fname = fname
+		self.lname = lname
+		self.email = fname + lname + '@mail.com'
+		self.stock = stock
+
+	def employeeName(self):
+		return f"{self.fname} {self.lname}"
+
+	def applyRaise(self):
+		self.stock = int(self.stock * self.raise_amount)
+
+
+class Developer(Employee):
+	raise_amount = 1.10
+
+	# we might be tempted to copy code in __init__ method
+	# of Employee class but to not repeat the code we let
+	# the Employee __init__ method to handle fname, lname,
+	# stock and let Developer __init__ to handle proglang
+	def __init__(self, fname, lname, stock, proglang):
+		super().__init__(fname, lname, stock)
+		self.proglang = proglang
+
+
+# super().__init__(fname, lname, stock) to Employee __init__ method and let
+# Employee class handle those arguments
+
+# there are multiple ways of doing this:
+# super().__init__(fname, lname, stock)
+# Employee.__init__(self, fname, lname, stock)
+# both of these ways of calling the parents __init__ method will work
+# it is recommanded to use super() because with single inheritance its
+# maintainable but its neccessary once start using multiple inheritance
+
+# when we instantiate developer it except proglang
+dev1 = Developer("Edward", "Teller", 4000, "Python")
+dev2 = Developer("Corey", "Schafer", 5000, "Kotlin")
+
+print(dev1.email)
+print(dev1.proglang)
+
+# create subclass for Manager
+
+class Employee:
+
+	raise_amount = 1.04
+
+	def __init__(self, fname, lname, stock):
+		self.fname = fname
+		self.lname = lname
+		self.email = fname + lname + '@mail.com'
+		self.stock = stock
+
+	def employeeName(self):
+		return f"{self.fname} {self.lname}"
+
+	def applyRaise(self):
+		self.stock = int(self.stock * self.raise_amount)
+
+
+class Developer(Employee):
+	raise_amount = 1.10
+
+	def __init__(self, fname, lname, stock, proglang):
+		super().__init__(fname, lname, stock)
+		self.proglang = proglang
+
+
+class Manager(Employee):
+
+	def __init__(self, fname, lname, stock, employees=None):
+		super().__init__(fname, lname, stock)
+
+		if employees is None:
+			self.employees = []
+		else:
+			self.employees = employees
+
+
+# pass the list of employees the Manager supervise as attribute
+# set employees to an empty list if the argument is not provided
+# and set them equal to that employees list if it is provided
+
+# Note: not pass an empty list as default argument instead of None because
+# never pass an mutable data type like a list or dict as default arguments
+
+class Employee:
+
+	raise_amount = 1.04
+
+	def __init__(self, fname, lname, stock):
+		self.fname = fname
+		self.lname = lname
+		self.email = fname + lname + '@mail.com'
+		self.stock = stock
+
+	def employeeName(self):
+		return f"{self.fname} {self.lname}"
+
+	def applyRaise(self):
+		self.stock = int(self.stock * self.raise_amount)
+
+
+class Developer(Employee):
+	raise_amount = 1.10
+
+	def __init__(self, fname, lname, stock, proglang):
+		super().__init__(fname, lname, stock)
+		self.proglang = proglang
+
+
+class Manager(Employee):
+
+	def __init__(self, fname, lname, stock, employees=None):
+		super().__init__(fname, lname, stock)
+
+		if employees is None:
+			self.employees = []
+		else:
+			self.employees = employees
+
+
+	def addEmployee(self, employee):
+		if employee not in self.employees:
+			self.employees.append(employee)
+
+
+	def remEmployee(self, employee):
+		if employee in self.employees:
+			self.employees.remove(employee)
+
+
+	def printEmployees(self):
+		for employee in self.employees:
+			print(employee.employeeName())
+
+
+# add and remove from the list of employees that the Manager supervise
+
+# in Manager class, __init__ method accept fname, lname, stock and list of
+# employees the manager supervises, the methods to add, remove and print out
+# all the employees in that list
+
+# create an instance of subclass Manager and the attributes and the methods
+# inherit from the Employee class
+man1 = Manager("Julian", "Schwinger", 9000, [dev1])
+
+print(man1.email)
+
+# print the employees the manager man1 supervise
+man1.printEmployees()
+
+# add an employee to the employees list of man1
+man1.addEmployee(dev2)
+
+# print the employees the manager man1 supervise
+man1.printEmployees()
+
+# remove an employee to the employees list of man1
+man1.remEmployee(dev1)
+
+# print the employees the manager man1 supervise
+man1.printEmployees()
+
+# just like with Developer class we can see how useful this actually is because
+# all the code in Manager class is specific to what we want for a manager as the
+# Developer class is specific to what we want for a developer and we are inherit
+# all of the common code from the Employee class so we really get to reuse our
+# code nicely here if we use subclassing correctly
+
+# python has these two built-in functions called isinstance() and issubclass()
+# isinstance() will tell us if an object is an instance of a class
+print(isinstance(man1, Manager))	# True
+print(isinstance(man1, Employee))	# True
+print(isinstance(man1, Developer))	# False
+
+# even though Developer and Manager both inherit from Employee class they are
+# not part of each other inheritance
+
+# issubclass() will tell us if a class is a subclass of another class
+print(issubclass(Manager, Employee))	# True
+print(issubclass(Developer, Manager))	# False
+print(issubclass(Developer, Employee))	# True
+
+# these built-in isinstance() and issubclass() functions may come and use in
+# experementing with inheritance on your own
+
+# Note: to learn more about subclassing look at Exception module of python
+# whiskey library: class HTTPException(Exception)
