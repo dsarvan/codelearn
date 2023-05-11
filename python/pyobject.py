@@ -817,3 +817,188 @@ print(issubclass(Developer, Employee))	# True
 
 # Note: to learn more about subclassing look at Exception module of python
 # whiskey library: class HTTPException(Exception)
+
+"""
+special methods:
+
+* special methods are also called as magic methods
+
+* special methods allows us to emulate build-in behavior within Python and its
+  also how we implement operator-overloading
+
+"""
+
+# example of operator-overloading
+print(1 + 2)			# 3
+print('a' + 'b')		# ab
+
+# when we add two integers together and two strings together the behaviour is
+# different as the former result an integer whereas the later concatenate the
+# two strings, so depending on what objects we working with the addition has
+# different behaviour
+
+# if we print the emp1 instance here
+print(emp1)
+# we get vague employee object and it will be nice if we could change this
+# behaviour to print out something a bit user-friendly and thats what the
+# special methods allow us to do, so by defining special methods able to
+# change built-in behavior and operations
+
+# special methods are always surrounded by double underscores (dunder), then
+# dunder init means init surrounded by double underscores
+
+# __init__ is special method we familiar with and its the first and most common
+# special method when working with classes, as we learned __init__ method is
+# implicitly called when we create our Employee objects and it sets all the
+# attributes for us
+
+# __repr__ is meant to be an unambigous representation of the object and should
+# be used for debugging and logging (meant to be seen by other developers)
+
+# __str__ is meant to be more readable representation of an object (meant to be
+# used as display to an end user)
+
+# let write the code for these and look at the difference, so first we want
+# atleast have __repr__ method because with __repr__ and without __str__ then
+# calling __str__ on an Employee would just use the __repr__ as fallback so its
+# good to have this as minimum
+
+# a good rule of thumb in creating this method is try to display something you
+# can copy and paste back in the Python code that would recreate that same
+# object
+
+class Employee:
+
+	raise_amount = 1.04
+
+	def __init__(self, fname, lname, stock):
+		self.fname = fname
+		self.lname = lname
+		self.email = fname + lname + '@mail.com'
+		self.stock = stock
+
+	def employeeName(self):
+		return f"{self.fname} {self.lname}"
+
+	def applyRaise(self):
+		self.stock = int(self.stock * self.raise_amount)
+
+	# return a string that can be used to recreate the object
+	def __repr__(self):
+		return f'Employee("{self.fname}", "{self.lname}", {self.stock})'
+
+	# display for the end user
+	def __str__(self):
+		return f'{self.employeeName} - {self.email}'
+
+
+emp1 = Employee("Edward", "Teller", 4000)
+
+# emp1 instance print __str__ by default
+print(emp1)
+
+# print __repr__ method
+print(repr(emp1))
+
+# print __str__ method
+print(str(emp1))
+
+# when we run repr(emp1) it actually calling emp1.__repr__() and similarly when
+# we run str(emp1) it actually calling emp1.__str__()
+
+# these two special methods __repr__ and __str__ allow us to change how our
+# objects are printed and displayed
+
+# unless we write complicated classes the methods __init__(), __repr__() and
+# __str__() will be the ones we use most often
+
+# special methods for arithmetic
+# print(1 + 2) use a special method in the background __add__()
+print(int.__add__(1, 2))     # access __add__() using int object
+# strings are using there own __add__() method
+print(str.__add__('a', 'b')) # access __add__() using str object
+# we can customize how addition works for the objects by creating __add__()
+
+# calculate total stocks by adding employees together
+
+class Employee:
+
+	raise_amount = 1.04
+
+	def __init__(self, fname, lname, stock):
+		self.fname = fname
+		self.lname = lname
+		self.email = fname + lname + '@mail.com'
+		self.stock = stock
+
+	def employeeName(self):
+		return f"{self.fname} {self.lname}"
+
+	def applyRaise(self):
+		self.stock = int(self.stock * self.raise_amount)
+
+	# return a string that can be used to recreate the object
+	def __repr__(self):
+		return f'Employee("{self.fname}", "{self.lname}", {self.stock})'
+
+	# display for the end user
+	def __str__(self):
+		return f'{self.employeeName} - {self.email}'
+
+	# add stocks of employee instance
+	def __add__(self, other):
+		return self.stock + other.stock
+
+
+emp1 = Employee("Edward", "Teller", 4000)
+emp2 = Employee("Corey", "Schafer", 5000)
+
+print(emp1 + emp2)
+
+# read documentation for arithematic special methods
+# examples:
+print(len("institute"))
+print("institute".__len__())
+
+# compute total number of charactes in employee full name
+
+class Employee:
+
+	raise_amount = 1.04
+
+	def __init__(self, fname, lname, stock):
+		self.fname = fname
+		self.lname = lname
+		self.email = fname + lname + '@mail.com'
+		self.stock = stock
+
+	def employeeName(self):
+		return f"{self.fname} {self.lname}"
+
+	def applyRaise(self):
+		self.stock = int(self.stock * self.raise_amount)
+
+	# return a string that can be used to recreate the object
+	def __repr__(self):
+		return f'Employee("{self.fname}", "{self.lname}", {self.stock})'
+
+	# display for the end user
+	def __str__(self):
+		return f'{self.employeeName} - {self.email}'
+
+	# add stocks of employee instance
+	def __add__(self, other):
+		return self.stock + other.stock
+
+	# number of characters
+	def __len__(self):
+		return len(self.employeeName())
+
+
+emp1 = Employee("Edward", "Teller", 4000)
+emp2 = Employee("Corey", "Schafer", 5000)
+
+print(len(emp1))
+print(len(emp2))
+
+# Note: refer datatime module for examples
