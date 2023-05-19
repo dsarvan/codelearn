@@ -8,7 +8,7 @@
 import sys
 
 import pyqtgraph as pg
-from PyQt6 import QtWidgets
+from PyQt6 import QtCore, QtWidgets
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -16,6 +16,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def __init__(self):
         super().__init__()
+
+        # set the size parameters (width, height) pixels
+        self.setFixedSize(QtCore.QSize(400, 300))
 
         # set the central widget of the window
         self.graphWidget = pg.PlotWidget()
