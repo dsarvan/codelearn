@@ -17,6 +17,8 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
 
+        self.setWindowTitle("Plotting with PyQtGraph")
+
         # set the size parameters (width, height) pixels
         self.setFixedSize(QtCore.QSize(400, 300))
 
@@ -37,7 +39,7 @@ def main():
     If no command line arguments than QApplication([]) is required."""
     app = QtWidgets.QApplication(sys.argv)
 
-    window = MainWindow()  # create a subclass of QMainWindow
+    window = MainWindow()  # an instance of the class MainWindow
     window.show()  # windows are hidden by default
 
     sys.exit(app.exec())  # start the event loop
