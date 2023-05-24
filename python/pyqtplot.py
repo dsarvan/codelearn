@@ -29,8 +29,8 @@ class MainWindow(QtWidgets.QMainWindow):
         hour = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
         temperature = [30, 32, 34, 32, 33, 31, 29, 32, 35, 45]
 
-        # set the background to green, by passing in the string "g"
-        self.graphWidget.setBackground("g")
+        # set the background to red, by passing in the string "r"
+        self.graphWidget.setBackground("r")
 
         # plot data: x, y values
         self.graphWidget.plot(hour, temperature)
