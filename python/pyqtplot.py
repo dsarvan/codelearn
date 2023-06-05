@@ -32,8 +32,8 @@ class MainWindow(QtWidgets.QMainWindow):
         # set the background color using hex notation #121317 as a string
         self.graphWidget.setBackground("#121317")
 
-        # plot data: x, y values
-        self.graphWidget.plot(hour, temperature)
+        # plot data: x, y values with pen parameter 'r'
+        self.graphWidget.plot(hour, temperature, pen='r')
 
 
 def main():
