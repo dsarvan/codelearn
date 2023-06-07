@@ -32,8 +32,11 @@ class MainWindow(QtWidgets.QMainWindow):
         # set the background color using hex notation #121317 as a string
         self.graphWidget.setBackground("#121317")
 
+        # line color in 3-tuple of int values, line width in pixels
+        lvalue = pg.mkPen(color=(255, 0, 0), width=2)
+
         # plot data: x, y values with lines drawn using Qt's QPen types
-        self.graphWidget.plot(hour, temperature, pen=pg.mkPen(color=(255, 0, 0)))
+        self.graphWidget.plot(hour, temperature, pen=lvalue)
 
 
 def main():
