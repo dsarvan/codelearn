@@ -32,9 +32,9 @@ class MainWindow(QtWidgets.QMainWindow):
         # set the background color using hex notation #121317 as a string
         self.graphWidget.setBackground("#121317")
 
-        # line color in 3-tuple of int values, line width in pixels, dashdot style
+        # line color in 3-tuple of int values, line width in pixels, dashdotdot style
         lvalue = pg.mkPen(
-            color=(255, 0, 0), width=2, style=QtCore.Qt.PenStyle.DashDotLine
+            color=(255, 0, 0), width=2, style=QtCore.Qt.PenStyle.DashDotDotLine
         )
 
         # plot data: x, y values with lines drawn using Qt's QPen types
