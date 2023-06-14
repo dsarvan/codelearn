@@ -38,7 +38,9 @@ class MainWindow(QtWidgets.QMainWindow):
         )
 
         # plot data: x, y values with lines drawn using Qt's QPen types & marker '+'
-        self.graphWidget.plot(hour, temperature, pen=lvalue, symbol='+')
+        self.graphWidget.plot(
+            hour, temperature, pen=lvalue, symbol="+", symbolSize=10, symbolBrush=("b")
+        )
 
 
 def main():
