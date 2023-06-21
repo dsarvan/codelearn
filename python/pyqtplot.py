@@ -34,12 +34,12 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # line color in 3-tuple of int values, line width in pixels, solidline style
         lvalue = pg.mkPen(
-            color=(255, 0, 0), width=2, style=QtCore.Qt.PenStyle.SolidLine
+            color=(255, 255, 255), width=1, style=QtCore.Qt.PenStyle.SolidLine
         )
 
-        # plot data: x, y values with lines drawn using Qt's QPen types & marker '+'
+        # plot data: x, y values with lines drawn using Qt's QPen types & marker 'o'
         self.graphWidget.plot(
-            hour, temperature, pen=lvalue, symbol="+", symbolSize=10, symbolBrush=("k")
+            hour, temperature, pen=lvalue, symbol="o", symbolSize=8, symbolBrush=("r")
         )
 
 
