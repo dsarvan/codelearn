@@ -37,9 +37,9 @@ class MainWindow(QtWidgets.QMainWindow):
             color=(255, 255, 255), width=1, style=QtCore.Qt.PenStyle.SolidLine
         )
 
-        # plot data: x, y values with lines drawn using Qt's QPen types & marker 'o'
+        # plot data: x, y values with lines drawn using Qt's QPen types & marker 's'
         self.graphWidget.plot(
-            hour, temperature, pen=lvalue, symbol="o", symbolSize=8, symbolBrush=("r")
+            hour, temperature, pen=lvalue, symbol="s", symbolSize=8, symbolBrush=("r")
         )
 
 
