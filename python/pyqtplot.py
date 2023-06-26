@@ -32,9 +32,12 @@ class MainWindow(QtWidgets.QMainWindow):
         # set the background color using hex notation #121317 as a string
         self.graphWidget.setBackground("#121317")
 
+        # set the main plot title
+        self.graphWidget.setTitle("Temperature Plot")
+
         # line color in 3-tuple of int values, line width in pixels, solidline style
         lvalue = pg.mkPen(
-            color=(255, 255, 255), width=1, style=QtCore.Qt.PenStyle.SolidLine
+            color=(220, 220, 220), width=1, style=QtCore.Qt.PenStyle.SolidLine
         )
 
         # plot data: x, y values with lines drawn using Qt's QPen types & marker '+'
