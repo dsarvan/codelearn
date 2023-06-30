@@ -32,9 +32,9 @@ class MainWindow(QtWidgets.QMainWindow):
         # set the background color using hex notation #121317 as a string
         self.graphWidget.setBackground("#121317")
 
-        # set the main plot title, text color, text size, text weight
+        # set the main plot title, text color, text size, text weight, text style
         self.graphWidget.setTitle(
-            "Temperature Plot", color="#dcdcdc", size="10pt", bold=True
+            "Temperature Plot", color="#dcdcdc", size="10pt", bold=True, italic=True
         )
 
         # line color in 3-tuple of int values, line width in pixels, solidline style
