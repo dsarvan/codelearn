@@ -37,6 +37,10 @@ class MainWindow(QtWidgets.QMainWindow):
             "Temperature Plot", color="#dcdcdc", size="10pt", bold=True, italic=True
         )
 
+        # set the axis labels (position and text)
+        self.graphWidget.setLabel("left", "Temperature (C)")
+        self.graphWidget.setLabel("bottom", "Hour (H)")
+
         # line color in 3-tuple of int values, line width in pixels, solidline style
         lvalue = pg.mkPen(
             color=(220, 220, 220), width=1, style=QtCore.Qt.PenStyle.SolidLine
