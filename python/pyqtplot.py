@@ -34,12 +34,13 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # set the main plot title, text color, text size, text weight, text style
         self.graphWidget.setTitle(
-            "Temperature Plot", color="#dcdcdc", size="10pt", bold=True, italic=True
+            "Temperature Plot", color="#dcdcdc", size="10pt", bold=True, italic=False
         )
 
-        # set the axis labels (position and text)
-        self.graphWidget.setLabel("left", "Temperature (C)")
-        self.graphWidget.setLabel("bottom", "Hour (H)")
+        # set the axis labels (position and text), style parameters
+        styles = {"color": "#dcdcdc", "font-size": "10pt"}
+        self.graphWidget.setLabel("left", "Temperature (C)", **styles)
+        self.graphWidget.setLabel("bottom", "Hour (H)", **styles)
 
         # line color in 3-tuple of int values, line width in pixels, solidline style
         lvalue = pg.mkPen(
