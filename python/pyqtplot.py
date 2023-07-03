@@ -42,6 +42,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.graphWidget.setLabel("left", "Temperature (C)", **styles)
         self.graphWidget.setLabel("bottom", "Hour (H)", **styles)
 
+        # set the legend which represents given line
+        self.graphWidget.addLegend()
+
         # line color in 3-tuple of int values, line width in pixels, solidline style
         lvalue = pg.mkPen(
             color=(220, 220, 220), width=1, style=QtCore.Qt.PenStyle.SolidLine
@@ -49,7 +52,13 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # plot data: x, y values with lines drawn using Qt's QPen types & marker '+'
         self.graphWidget.plot(
-            hour, temperature, pen=lvalue, symbol="+", symbolSize=8, symbolBrush=("r")
+            hour,
+            temperature,
+            name="Sensor 1",
+            pen=lvalue,
+            symbol="+",
+            symbolSize=8,
+            symbolBrush=("r"),
         )
 
 
