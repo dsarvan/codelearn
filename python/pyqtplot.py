@@ -45,6 +45,9 @@ class MainWindow(QtWidgets.QMainWindow):
         # set the legend which represents given line
         self.graphWidget.addLegend()
 
+        # set the background grid for both the x and y axis
+        self.graphWidget.showGrid(x=True, y=True)
+
         # line color in 3-tuple of int values, line width in pixels, solidline style
         lvalue = pg.mkPen(
             color=(220, 220, 220), width=1, style=QtCore.Qt.PenStyle.SolidLine
