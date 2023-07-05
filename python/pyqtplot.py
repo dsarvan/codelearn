@@ -48,6 +48,10 @@ class MainWindow(QtWidgets.QMainWindow):
         # set the background grid for both the x and y axis
         self.graphWidget.showGrid(x=True, y=True)
 
+        # set the axis limits within the specified ranges
+        self.graphWidget.setXRange(1, 10)
+        self.graphWidget.setYRange(29, 45)
+
         # line color in 3-tuple of int values, line width in pixels, solidline style
         lvalue = pg.mkPen(
             color=(220, 220, 220), width=1, style=QtCore.Qt.PenStyle.SolidLine
