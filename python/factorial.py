@@ -12,7 +12,7 @@ import numpy as np
 
 def factorial1(n: int) -> int:
     """not suggested (N = 22)"""
-    f = np.ones(n + 1)
+    f = np.ones(n + 1).astype(float)
     for i in range(1, n + 1):
         f[i] = i * f[i - 1]
     return int(f[-1])
@@ -20,13 +20,13 @@ def factorial1(n: int) -> int:
 
 def factorial2(n: int) -> int:
     """not suggested (N = 22)"""
-    f = np.linspace(1, n, n)
+    f = np.linspace(1, n, n).astype(float)
     return int(np.prod(f))
 
 
 def factorial3(n: int) -> int:
     """well suggested"""
-    product = 1
+    product: int = 1
     for i in range(1, n + 1):
         product = product * i
     return product
