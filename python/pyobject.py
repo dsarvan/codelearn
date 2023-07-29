@@ -108,7 +108,7 @@ print(Employee.employeeName(emp2))
 # but when we call the method on the class we do have
 # to pass in the instance and that get pass in as self
 
-# when we run empl.employeeName() it get transformed into
+# when we run emp1.employeeName() it get transformed into
 # Employee.employeeName() and passes in emp1 as self
 
 """
