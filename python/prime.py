@@ -8,9 +8,9 @@
 import math
 
 
-def prime(number):
+def prime(number: int) -> bool:
     """function to check prime"""
-    sqrt_number = math.sqrt(number)
+    sqrt_number: float = math.sqrt(number)
     for index in range(2, int(sqrt_number) + 1):
         if (number / index).is_integer():
             return False
