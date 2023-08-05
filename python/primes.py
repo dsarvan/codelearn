@@ -8,9 +8,9 @@
 import math
 
 
-def prime(number):
+def prime(number: int) -> str:
     """function to check prime"""
-    sqrt_number = math.sqrt(number)
+    sqrt_number: float = math.sqrt(number)
     for i in range(2, int(sqrt_number) + 1):
         if number % i == 0:
             return f"{number} is not a prime number"
@@ -18,5 +18,5 @@ def prime(number):
 
 
 if __name__ == "__main__":
-    for n in range(4, 31):
+    for n in range(2, 31):
         print(prime(n))
