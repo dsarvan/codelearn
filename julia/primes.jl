@@ -5,8 +5,8 @@
 
 """ Program to implement Sieve of Eratosthenes """
 
-function eratosthenes(n::Int)
-    isprime = trues(n)
+function eratosthenes(n::Int)::Vector{Int}
+    isprime::BitVector = trues(n)
     isprime[1] = false
     for i = 2:isqrt(n)
         if isprime[i]
