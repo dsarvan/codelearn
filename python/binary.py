@@ -5,17 +5,21 @@
 
 """ Script to convert number from base 10 to base 2 """
 
-import numpy as np
 
-num = int(input("Enter number (base 10): "))
+def binary(nval: int) -> str:
+    """function computes binary"""
+    rval: str = ""
+    qval: int = nval // 2
 
-rval = []
-qval = int(num / 2)
+    while qval != 0:
+        rval = rval + str(nval % 2)
+        qval = nval // 2
+        nval = qval
 
-while qval != 0:
-    rval.append(int(num % 2))
-    qval = int(num / 2)
-    num = qval
+    return rval[::-1]
 
-rval.reverse()
-print(np.array(rval))
+
+if __name__ == "__main__":
+    num = int(input("Enter number (base 10): "))
+    print(f"The binary number of {num} is {binary(num)}")
+    print(f"The binary number of {num} is {bin(num)[2:]}")
