@@ -5,12 +5,28 @@
 
 """ Program to convert number from base 10 to base 2 """
 
-print("Enter number (base 10): ")
 
-# reads the string
-num = readline()
+function binary(nval::Int)::String
+    """function computes binary"""
+    rval::String = ""
+    qval::Int = fld(nval, 2)
 
-# parsing the string to integer
-num = parse(Int64, num)
+    while qval != 0
+        rval = rval * string(nval % 2)
+        qval = fld(nval, 2)
+        nval = qval
+    end
 
-println(bitstring(num))
+    return rval[end:-1:1]
+end
+
+
+function main()
+    print("Enter number (base 10): ")
+    num = parse(Int64, readline())
+    println("The binary number of $num is ", binary(num))
+    println("The binary number of $num is ", bitstring(num))
+    println("The binary number of $num is ", string(num, base = 2))
+end
+
+main()
