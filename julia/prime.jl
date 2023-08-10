@@ -8,8 +8,8 @@
 
 function prime(number::Int)::Bool
     """function to check prime"""
-    sqrt_number::Float64 = sqrt(number)
-    for index in range(2, floor(Int, sqrt_number))
+    sqrt_number::Int = isqrt(number)
+    for index in range(2, sqrt_number)
         if isinteger(number / index)
             return false
         end
