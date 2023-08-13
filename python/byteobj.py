@@ -5,8 +5,7 @@
 
 """ Script to print the byte value """
 
-# byte object
-BYT = b"52s3a6"
 
-for byte in BYT:
-    print(byte)
+if __name__ == "__main__":
+    byte: bytes = b"52s3a6"
+    print(*byte)
