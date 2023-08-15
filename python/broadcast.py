@@ -5,11 +5,12 @@
 
 """ Script to broadcast data to all processes """
 
-from numpy import array
 from mpi4py import MPI
+from numpy import array
 
 
 def main():
+    """broadcast data to all processes"""
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
     size = comm.Get_size()
@@ -29,7 +30,7 @@ def main():
     if rank == 0:
         print("bcast finished")
 
-    print(f"data on rank {rank} is {data}")
+    print(f"data on rank {rank} of size {size} is {data}")
     comm.Barrier()
 
 
