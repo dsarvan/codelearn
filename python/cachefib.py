@@ -6,21 +6,18 @@
 """ Script to compute nth Fibonacci number """
 
 
-def fibonacci(n: int) -> int:
+def fibonacci(n: int, cache) -> int:
     """compute nth fibonacci"""
-
-    cache: dict[int, int] = {}
-
-    if n < 3:
-        return 1
 
     if n in cache:
         return cache[n]
 
-    cache[n] = fibonacci(n - 1) + fibonacci(n - 2)
+    cache[n] = fibonacci(n - 1, cache) + fibonacci(n - 2, cache)
     return cache[n]
 
 
 if __name__ == "__main__":
-    fnum: int = fibonacci(30)
-    print(f"The 30th Fibonacci number is {fnum}")
+    cval: dict[int, int] = {1: 1, 2: 1}
+    nval: int = 1000
+    fnum: int = fibonacci(nval, cval)
+    print(f"The {nval}th Fibonacci number is {fnum}")
