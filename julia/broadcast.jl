@@ -9,7 +9,7 @@ import MPI
 MPI.Init()
 
 function main()
-
+    """broadcast data to all processes"""
     comm = MPI.COMM_WORLD
     rank = MPI.Comm_rank(comm)
     size = MPI.Comm_size(comm)
@@ -31,7 +31,7 @@ function main()
         println("bcast finished")
     end
 
-    println("data on rank $rank is $data")
+    println("data on rank $rank of size $size is $data")
 
     MPI.Barrier(comm)
     MPI.Finalize()
