@@ -5,11 +5,11 @@
 
 """ Script to compute nth Fibonacci number """
 
-cache = {}
 
+def fibonacci(n: int) -> int:
+    """compute nth fibonacci"""
 
-def fibonacci(n):
-    """compute fibonacci"""
+    cache: dict[int, int] = {}
 
     if n < 3:
         return 1
@@ -21,5 +21,6 @@ def fibonacci(n):
     return cache[n]
 
 
-fnum = fibonacci(30)
-print(f"The 30th Fibonacci number is {fnum}")
+if __name__ == "__main__":
+    fnum: int = fibonacci(30)
+    print(f"The 30th Fibonacci number is {fnum}")
