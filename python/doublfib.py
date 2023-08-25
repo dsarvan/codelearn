@@ -9,7 +9,7 @@
 def fibonacci(n: int) -> int:
     """compute nth fibonacci"""
 
-    nval: int = len(bin(n)[2:])
+    nval: int = n.bit_length()
 
     fib: list[int] = [0, 1, 1, 2]
 
