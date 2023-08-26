@@ -9,7 +9,7 @@
 function fibonacci(n::Int)::BigInt
     """compute nth fibonacci"""
 
-    nval::Int = length(string(n, base = 2))
+    nval::Int = ndigits(n, base = 2)
 
     fib::Vector{BigInt} = [0, 1, 1, 2]
 
