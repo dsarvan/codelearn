@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# File: dynamicfib.py
+# File: dynamfib.py
 # Name: D.Saravanan
 # Date: 29/10/2022
 
