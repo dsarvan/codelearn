@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include <gmp.h>
 
-
 mpz_t *fibonacci(mpz_t * result, int n) {
     /* compute nth fibonacci */
 
@@ -48,9 +47,7 @@ mpz_t *fibonacci(mpz_t * result, int n) {
     return result;
 }
 
-
 int main() {
-
     int N = 10000;
 
     mpz_t result;
