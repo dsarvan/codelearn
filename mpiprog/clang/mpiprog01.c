@@ -1,7 +1,8 @@
 /* File: mpiprog01.c
  * Name: D.Saravanan
  * Date: 08/11/2022
- * MPI program working example
+ * Program to print the rank of the current process, the number of MPI
+ * processes and the hostname on which the current process is running
 */
 
 #include <stdio.h>
