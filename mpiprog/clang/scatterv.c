@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
 	for (size_t i = 0; i < size; workload[i] = nrow / size, i++);
 	for (size_t i = 0; i < nrow % size; workload[i] += 1, i++);
 
-	size_t mrow = workload[rank]; /* number of rows sent to each process */
+	size_t mrow = workload[rank]; /* number of rows send to each process */
 	double *ndata = (double *) calloc(mrow*ncol, sizeof(*ndata));
 
 	/* integer array specifying the number of elements to send to each process */
