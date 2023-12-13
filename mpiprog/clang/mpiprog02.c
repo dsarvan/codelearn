@@ -39,8 +39,8 @@ int main(int argc, char **argv) {
 
 		else if (rank >= size/2) {
 			mate = rank - size/2;
-			MPI_Send(&rank, 1, MPI_INT, mate, 1, MPI_COMM_WORLD);
 			MPI_Recv(&mesg, 1, MPI_INT, mate, 1, MPI_COMM_WORLD, &status);
+			MPI_Send(&rank, 1, MPI_INT, mate, 1, MPI_COMM_WORLD);
 		}
 
 		printf("rank %d is partner with %d\n", rank, mesg);
