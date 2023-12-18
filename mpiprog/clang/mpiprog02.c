@@ -21,26 +21,26 @@ int main(int argc, char **argv) {
 
     if (size % 2 != 0) {
 		if (rank == 0)
-			printf("Quit!. Need an even number of processor, but nproc = %d\n", size);
+			printf("Quit! Need an even number of processes, but nproc is %d.\n", size);
     }
 
     else {
 		if (rank == 0)
-			printf("Number of processor: %d\n", size);
+			printf("Number of processes: %d\n", size);
 
 		MPI_Get_processor_name(name, &length);
 		printf("rank %d of nproc %d on %s\n", rank, size, name);
 
 		if (rank < size/2) {
 			mate = size/2 + rank;
-			MPI_Send(&rank, 1, MPI_INT, mate, 1, MPI_COMM_WORLD);
-			MPI_Recv(&mesg, 1, MPI_INT, mate, 1, MPI_COMM_WORLD, &status);
+			MPI_Send(&rank, 1, MPI_INT, mate, 11, MPI_COMM_WORLD);
+			MPI_Recv(&mesg, 1, MPI_INT, mate, 12, MPI_COMM_WORLD, &status);
 		}
 
 		else if (rank >= size/2) {
 			mate = rank - size/2;
-			MPI_Recv(&mesg, 1, MPI_INT, mate, 1, MPI_COMM_WORLD, &status);
-			MPI_Send(&rank, 1, MPI_INT, mate, 1, MPI_COMM_WORLD);
+			MPI_Recv(&mesg, 1, MPI_INT, mate, 11, MPI_COMM_WORLD, &status);
+			MPI_Send(&rank, 1, MPI_INT, mate, 12, MPI_COMM_WORLD);
 		}
 
 		printf("rank %d is partner with %d\n", rank, mesg);
