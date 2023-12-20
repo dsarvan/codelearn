@@ -22,12 +22,12 @@ int main(int argc, char **argv) {
 
     if (size % 2 != 0) {
 		if (rank == 0)
-			printf("Quit!. Need an even number of processor, but nproc = %d\n", size);
+			printf("Quit! Need an even number of processes, but nproc is %d.\n", size);
     }
 
     else {
 		if (rank == 0)
-			printf("Number of processor: %d\n", size);
+			printf("Number of processes: %d\n", size);
 
 		MPI_Get_processor_name(name, &length);
 		printf("rank %d of nproc %d on %s\n", rank, size, name);
@@ -38,10 +38,10 @@ int main(int argc, char **argv) {
 			mate = rank - size/2;
 
 		/* nonblocking send */
-		MPI_Isend(&rank, 1, MPI_INT, mate, 1, MPI_COMM_WORLD, &request[0]);
+		MPI_Isend(&rank, 1, MPI_INT, mate, 11, MPI_COMM_WORLD, &request[0]);
 
 		/* nonblocking recv */
-		MPI_Irecv(&mesg, 1, MPI_INT, mate, 1, MPI_COMM_WORLD, &request[1]);
+		MPI_Irecv(&mesg, 1, MPI_INT, mate, 11, MPI_COMM_WORLD, &request[1]);
 
 		/* wait for all given communications to complete */
 		MPI_Waitall(2, request, status);
