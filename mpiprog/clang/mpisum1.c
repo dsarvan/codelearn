@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
     for (size_t i = 0; i < size; workload[i] = N / size, i++);
     for (size_t i = 0; i < N % size; workload[i] += 1, i++);
 
-    size_t n = workload[rank]; /* number of elements sent to each process */
+    size_t n = workload[rank]; /* number of elements send to each process */
     double *ndata = (double *) calloc(n, sizeof(*ndata));
 
 	/* send data from process 0 to all other processes in a communicator */
