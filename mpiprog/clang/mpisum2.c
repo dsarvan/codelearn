@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
 	size_t sload = 0;
 	for (size_t n = 0; n < rank; sload += workload[n], n++);
 
-    size_t n = workload[rank]; /* number of elements sent to each process */
+    size_t n = workload[rank]; /* number of elements send to each process */
     double *ndata = (double *) calloc(n, sizeof(*ndata));
 
 	/* initialize array on each process */
