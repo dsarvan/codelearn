@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
 	MPI_Status status;
 	MPI_Request request;
 
-	int nrow = 62, nval = 15, ncol = 7;
+	int nrow = 10062, nval = 10015, ncol = 1007;
 
 	/* exit if nrow is not divisible by size */
 	if (nrow % size != 0) {
@@ -32,11 +32,10 @@ int main(int argc, char **argv) {
 
 	double *A = (rank == 0) ? (double *) calloc(nrow*nval, sizeof(*A)) : NULL; /* matrix A */
 	double *B = (rank == 0) ? (double *) calloc(nval*ncol, sizeof(*B)) : NULL; /* matrix B */
-	double *C = (rank == 0) ? (double *) calloc(nrow*ncol, sizeof(*C)) : NULL; /* matrix C */
 
 	if (rank == 0) {
 
-		printf("Starting parallel matrix multiplication example ...\n");
+		printf("Starting parallel matrix multiplication ...\n");
 		printf("Using matrix sizes A[%d][%d], B[%d][%d], C[%d][%d]\n",
 				nrow, nval, nval, ncol, nrow, ncol);
 
@@ -59,15 +58,13 @@ int main(int argc, char **argv) {
 	size_t mrow = workload_A[rank]; /* no. of rows in matrix nA */
 	size_t mcol = workload_B[rank]; /* no. of cols in matrix nB */
 
-	double *nA = (double *) calloc(mrow*nval, sizeof(*nA)); /* matrix nA */
-	double *nB = (double *) calloc(nval*mcol, sizeof(*nB)); /* matrix nB */
-	double *nC = (double *) calloc(nrow*mcol, sizeof(*nC)); /* matrix nC */
-
 	int *count_A = (int *) calloc(size, sizeof(*count_A)); /* no. of elements in nA */
 	for (size_t i = 0; i < size; count_A[i] = workload_A[i]*nval, i++);
 
 	int *displ_A = (int *) calloc(size, sizeof(*displ_A)); /* displacement data nA */
 	for (size_t i = 1; i < size; displ_A[i] = displ_A[i - 1] + workload_A[i - 1]*nval, i++);
+
+	double *nA = (double *) calloc(mrow*nval, sizeof(*nA)); /* matrix nA */
 
 	/* scatter matrix A elements from process 0 to all other process in communicator */
 	MPI_Scatterv(A, count_A, displ_A, MPI_DOUBLE, nA, count_A[rank], MPI_DOUBLE, 0, MPI_COMM_WORLD);
@@ -80,25 +77,20 @@ int main(int argc, char **argv) {
 	int *displ_B = (int *) calloc(size, sizeof(*displ_B)); /* displacement data nB */
 	for (size_t i = 1; i < size; displ_B[i] = displ_B[i - 1] + nval*workload_B[i - 1], i++);
 
+	double *nB = (double *) calloc(nval*mcol, sizeof(*nB)); /* matrix nB */
+
 	/* scatter matrix B elements from process 0 to all other process in communicator */
 	MPI_Scatterv(B, count_B, displ_B, MPI_DOUBLE, nB, count_B[rank], MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
 	free(B); free(count_B); free(displ_B);
 
-	int *count_C = (int *) calloc(size, sizeof(*count_C)); /* no. of elements in nC */
-	for (size_t i = 0; i < size; count_C[i] = nrow*workload_B[i], i++);
-
-	int *displ_C = (int *) calloc(size, sizeof(*displ_C)); /* displacement data nC */
-	for (size_t i = 1; i < size; displ_C[i] = displ_C[i - 1] + nrow*workload_B[i - 1], i++);
-
-	/* scatter matrix C elements from process 0 to all other process in communicator */
-	MPI_Scatterv(C, count_C, displ_C, MPI_DOUBLE, nC, count_C[rank], MPI_DOUBLE, 0, MPI_COMM_WORLD);
+	double *nC = (double *) calloc(nrow*mcol, sizeof(*nC)); /* matrix nC */
 
 	double sval = 0;
 	int rval = rank;
 
 	/* matrix multiplication */
-	printf("Performing matrix multiplication ...\n");
+	if (rank == 0) printf("Performing matrix multiplication ...\n");
 	for (size_t iter = 0; iter < size; iter++) {
 
 		for (size_t i = 0; i < mrow; i++) {
@@ -115,12 +107,22 @@ int main(int argc, char **argv) {
 		rval = (rval == size - 1) ? 0 : rval + 1;
 
 		/* non-blocking send and receive routines */
-		MPI_Isend(nA, mrow*nval, MPI_DOUBLE, (rank == 0 ? size - 1 : rank - 1), 11, MPI_COMM_WORLD, &request);
-		MPI_Irecv(nA, mrow*nval, MPI_DOUBLE, (rank == size - 1 ? 0 : rank + 1), 11, MPI_COMM_WORLD, &request);
-		MPI_Wait(&request, &status); /* wait for all given communications to complete */
+		MPI_Isendrecv_replace(nA, mrow*nval, MPI_DOUBLE,
+				  (rank == 0 ? size - 1 : rank - 1), 11,
+				  (rank == size - 1 ? 0 : rank + 1), 11,
+				  MPI_COMM_WORLD, &request);
+
+		/* wait for all given communications to complete */
+		MPI_Wait(&request, &status);
 	}
 
 	free(nA); free(nB);
+
+	int *count_C = (int *) calloc(size, sizeof(*count_C)); /* no. of elements in nC */
+	for (size_t i = 0; i < size; count_C[i] = nrow*workload_B[i], i++);
+
+	int *displ_C = (int *) calloc(size, sizeof(*displ_C)); /* displacement data nC */
+	for (size_t i = 1; i < size; displ_C[i] = displ_C[i - 1] + nrow*workload_B[i - 1], i++);
 
 	double *M = (rank == 0) ? (double *) calloc(nrow*ncol, sizeof(*M)) : NULL; /* matrix M */
 
@@ -128,6 +130,8 @@ int main(int argc, char **argv) {
 	MPI_Gatherv(nC, count_C[rank], MPI_DOUBLE, M, count_C, displ_C, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
 	free(nC); free(count_C); free(displ_C);
+
+	double *C = (rank == 0) ? (double *) calloc(nrow*ncol, sizeof(*C)) : NULL; /* matrix C */
 
 	/* matrix transpose */
 	if (rank == 0) {
