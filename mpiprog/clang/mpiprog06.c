@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
 		printf("Using matrix sizes A[%d][%d], B[%d][%d], C[%d][%d]\n",
 				nrow, nval, nval, ncol, nrow, ncol);
 
-	    printf("Initializing matrices ...\n");
+		printf("Initializing matrices ...\n");
 	}
 
 	double *nA = (double *) calloc(mrow*nval, sizeof(*nA)); /* matrix nA */
