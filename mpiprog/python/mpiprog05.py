@@ -47,7 +47,7 @@ def main():
 
     nA = np.zeros((mrow, nval)) # matrix nA
 
-	# scatter matrix A elements from process 0 to all other process in communicator
+    # scatter matrix A elements from process 0 to all other process in communicator
     comm.Scatterv([A, count_A, displ_A, MPI.DOUBLE], nA, root=0)
 
     count_B = [nval * workload_B[i] for i in range(size)] # no. of elements in nB
@@ -55,7 +55,7 @@ def main():
 
     nB = np.zeros((mcol, nval)) # matrix nB
 
-	# scatter matrix B elements from process 0 to all other process in communicator
+    # scatter matrix B elements from process 0 to all other process in communicator
     comm.Scatterv([B, count_B, displ_B, MPI.DOUBLE], nB, root=0)
 
     nC = np.zeros((mcol, nrow)) # matrix nC
