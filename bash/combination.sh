@@ -6,14 +6,13 @@
 
 factorial() {
 
-    declare -i value=1
+	declare -i value=1
 
-    for ((x=$1; x>=1; x--))
-    do 
-        value=$((value*x))
-    done 
+	for ((x = $1; x >= 1; x--)); do
+		value=$((value * x))
+	done
 
-    return $value
+	return $value
 }
 
 declare -i n
@@ -24,9 +23,12 @@ read -r n
 printf "Enter r: "
 read -r r
 
-factorial "$n"; value1=$?
-factorial "$n"-"$r"; value2=$?
-factorial "$r"; value3=$?
+factorial "$n"
+value1=$?
+factorial "$n"-"$r"
+value2=$?
+factorial "$r"
+value3=$?
 
-(( combination = value1/(value2*value3) ))
+((combination = value1 / (value2 * value3)))
 printf "Combination C($n,$r): %d\\n" $combination
