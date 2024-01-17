@@ -6,7 +6,6 @@
 
 remote="origin1 origin2 origin3 origin4 origin5"
 
-for origin in $remote
-do
-    git push -u "$origin" master
+for origin in $remote; do
+	git push -u "$origin" master
 done
