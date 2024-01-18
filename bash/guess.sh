@@ -6,29 +6,26 @@
 
 option="yes"
 
-while [ $option == "yes" ]
-do
-    declare -i N
+while [ $option == "yes" ]; do
+	declare -i N
 	N=29
 
 	echo -e "\\nI 'm thinking of a number! Try to guess the number I 'm thinking of: "
 	read -r num
 
-	while [ "$num" -ne $N ] 
-	do
-		if [ "$num" -lt $N ]
-		then
+	while [ "$num" -ne $N ]; do
+		if [ "$num" -lt $N ]; then
 			echo "Too low! Guess again: "
 			read -r num
 
-		else [ "$num" -gt $N ]
+		else
+			[ "$num" -gt $N ]
 			echo "Too high! Guess again: "
 			read -r num
 		fi
 	done
 
-	if [ "$num" -eq $N ]
-	then
+	if [ "$num" -eq $N ]; then
 		echo "That's it! Would you like to play again? (yes/no)"
 		read -r option
 	fi
