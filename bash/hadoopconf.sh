@@ -17,7 +17,7 @@ apt-get update
 apt-get install -y vim openssh-server ssh
 mkdir /home/$user/.ssh/
 ssh-keygen -t rsa -P " " -f "/home/$user/.ssh/id_rsa" -q
-cat /home/$user/.ssh/id_rsa.pub >> /home/$user/.ssh/authorized_keys
+cat /home/$user/.ssh/id_rsa.pub >>/home/$user/.ssh/authorized_keys
 
 # start ssh
 service ssh start
@@ -36,7 +36,7 @@ set showcmd
 set showmatch
 set smartcase
 set tabstop=4
-highlight LineNr cterm=NONE ctermfg=DarkGrey ctermbg=NONE" >> /home/$user/.exrc
+highlight LineNr cterm=NONE ctermfg=DarkGrey ctermbg=NONE" >>/home/$user/.exrc
 chown $user:$user /home/$user/.exrc
 source /home/$user/.exrc
 
@@ -52,7 +52,7 @@ add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
 # update apt sources and install Java 8
 apt-get update && apt-get install -y adoptopenjdk-8-hotspot
 # JAVA_HOME environment variable
-echo "JAVA_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64" >> /etc/environment
+echo "JAVA_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64" >>/etc/environment
 # for changes to take effect on your current shell
 source /etc/environment
 
@@ -60,10 +60,10 @@ source /etc/environment
 wget -c https://archive.apache.org/dist/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz
 tar -xzf hadoop-3.2.1.tar.gz
 chown -R $user:$user hadoop-3.2.1/
-mv hadoop-3.2.1/ /usr/local/hadoop/ 
+mv hadoop-3.2.1/ /usr/local/hadoop/
 
 # set environment variables
-echo "PATH=/usr/local/hadoop/bin:/usr/local/hadoop/sbin:$PATH" >> /home/$user/.profile
+echo "PATH=/usr/local/hadoop/bin:/usr/local/hadoop/sbin:$PATH" >>/home/$user/.profile
 echo "export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64
 export HADOOP_HOME=/usr/local/hadoop
 export HADOOP_INSTALL=$HADOOP_HOME
@@ -73,7 +73,7 @@ export HADOOP_HDFS_HOME=$HADOOP_HOME
 export HADOOP_MAPRED_HOME=$HADOOP_HOME
 export HADOOP_YARN_HOME=$HADOOP_HOME
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
-export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin" >> /home/$user/.bashrc
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin" >>/home/$user/.bashrc
 source /home/$user/.bashrc
 
 # configuration of the node
