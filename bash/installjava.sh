@@ -9,7 +9,7 @@ sudo apt-get install apt-transport-https ca-certificates wget
 sudo apt-get install dirmngr gnupg software-properties-common
 
 # import the repository's GPG key using the following wget commands
-wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public|sudo apt-key add -
+wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
 
 # add the AdoptOpenJDK APT repository to the system
 sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
