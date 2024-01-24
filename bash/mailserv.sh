@@ -8,7 +8,6 @@ echo -e "\nInput file name is $1"
 
 services="hotmail.com gmail.com microsoft.com verizon.net yahoo.com"
 
-for service in $services
-do
-    echo "Count of $service: `grep -cw $service $1`"
+for service in $services; do
+	echo "Count of $service: $(grep -cw $service $1)"
 done
