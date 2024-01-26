@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # File: maximum1.sh
-# Name: D.Saravanan    
+# Name: D.Saravanan
 # Date: 24/02/2020
 # Script to display maximum of two numbers for the user input
 
@@ -11,8 +11,7 @@ read y
 
 echo " "
 
-if [ $x -ge $y ]
-then
+if [ $x -ge $y ]; then
 	echo "$x is maximum"
 else
 	echo "$y is maximum"
