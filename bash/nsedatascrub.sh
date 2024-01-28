@@ -20,24 +20,22 @@
 echo "Enter NSE data file name: "
 read fname
 
-if [ -f $fname ]
-then
+if [ -f $fname ]; then
 
-    for n in {2..14..2}
-    do
-        cut -d '"' -f $n $fname > file$n.txt
-    done
+	for n in {2..14..2}; do
+		cut -d '"' -f $n $fname >file$n.txt
+	done
 
-    # combine data column wise
-    paste -d ',' file{2..14..2}.txt > result.csv
+	# combine data column wise
+	paste -d ',' file{2..14..2}.txt >result.csv
 
-    # remove spaces between the columns
-    tr -d '[:blank:]' < result.csv > $fname
+	# remove spaces between the columns
+	tr -d '[:blank:]' <result.csv >$fname
 
-    # delete file{2..14..2}.txt and result.csv
-    rm file{2..14..2}.txt result.csv
-    
+	# delete file{2..14..2}.txt and result.csv
+	rm file{2..14..2}.txt result.csv
+
 else
-    echo "Not a regular file."
+	echo "Not a regular file."
 
 fi
