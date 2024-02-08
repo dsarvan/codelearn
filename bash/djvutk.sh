@@ -2,7 +2,7 @@
 # File: djvutk.sh
 # Name: D.Saravanan
 # Date: 07/02/2024
-# Script to remove page from input file to create output file
+# Script to remove pages from input file to create output file
 
 # Usage:
 # ./djvutk.sh input.djvu start_page end_page/end output.djvu
