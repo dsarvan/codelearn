@@ -36,6 +36,16 @@ def main():
     mean = libc.mean(arr, nval)
     print(mean)
 
+    # call the c function matrixC from the libaray
+    libc.matrixC.restype = ctypes.POINTER(ctypes.c_double)
+    libc.matrixC.argtypes = [ctypes.c_int, ctypes.c_int]
+
+    mrow, mcol = 4, 4
+    result = libc.matrixC(mrow, mcol)
+
+    for n in range(mrow * mcol):
+        print(result[n])
+
     # call the c function simulation from the library
     ex = np.zeros(200, dtype=np.float64)
     hy = np.zeros(200, dtype=np.float64)
