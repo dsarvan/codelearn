@@ -4,7 +4,8 @@
  * Program source of the shared library program.so
 */
 
-
+#include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 int compute(int nval) {
@@ -25,6 +26,14 @@ double mean(long *arr, long n) {
 	for (long i = 0; i < n; sum = sum + arr[i], i++);
 	double mean = sum / (double)n;
 	return mean;
+}
+
+
+double *matrixC(int nrow, int ncol) {
+	double *C = (double *) calloc(nrow*ncol, sizeof(*C));
+	for (size_t i = 0; i < nrow*ncol; C[i] = 1.0 * i, i++);
+	for (size_t i = 0; i < nrow*ncol; printf("%lf\n", C[i]), i++);
+	return C;
 }
 
 
