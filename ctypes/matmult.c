@@ -122,9 +122,10 @@ double *matmult(int argc, char **argv, int nrow, int nval, int ncol) {
 
 	free(M);
 
-	if (rank == 0)
-		return C;
+	if (rank == 0) return C;
 
 	free(C);
 	MPI_Finalize();
+
+	return 0;
 }
