@@ -13,7 +13,7 @@ epage=$3 # end page number
 input_file=$1  # input file name
 output_file=$4 # output file name
 
-if [ $# == 4 ]; then
+if [[ $# == 4 && $1 == *.djvu ]]; then
 
 	# copy input file to output file
 	cp "$input_file" "$output_file"
