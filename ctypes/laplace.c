@@ -33,12 +33,12 @@ double time_step(double *u, int nx, int ny, double dx, double dy) {
 double solve_equation(double *u, int nx, int ny, double dx, double dy) {
 	/* solve the laplace equation */
 
-	int iter = 0;
+	int nval = 0;
 	double err = 1;
 
-	while(iter < 10000 && err > 1e-6) {
+	while(nval < 10000 && err > 1e-6) {
 		err = time_step(u, nx, ny, dx, dy);
-		iter++;
+		nval++;
 	}
 
 	return err;
