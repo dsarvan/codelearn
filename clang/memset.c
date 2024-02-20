@@ -14,7 +14,7 @@ int main() {
 	   Sets the first num bytes of the block of memory pointed
 	   by ptr to the specified value (interpreted as an unsigned char).
 
-	  Parameters:
+	   Parameters:
 
 		ptr
 			Pointer to the block of memory to fill.
@@ -28,7 +28,7 @@ int main() {
 			Number of bytes to be set to the value.
 			size_t is an unsigned integral type.
 
-	  Return Value:
+	   Return Value:
 
 		ptr is returned.
 
