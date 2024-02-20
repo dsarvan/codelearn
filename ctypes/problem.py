@@ -31,7 +31,14 @@ def main():
     for i in range(nval):
         x[i] = 2 * i
 
-    # print elements
+    # print elements (before memset)
+    for i in range(nval):
+        print(x[i])
+
+    # libc.memset() function to re-initializes with 0
+    libc.memset(x, 0, nval * ctypes.sizeof(ctypes.c_double))
+
+    # print elements (after memset)
     for i in range(nval):
         print(x[i])
 
