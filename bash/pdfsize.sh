@@ -7,8 +7,8 @@
 # Usage: ./pdfsize.sh input.pdf
 
 if [ -z "$(which pdfinfo)" ]; then
-    echo "requires the pdfinfo utility provided by the poppler-utils package"
-    exit 1
+	echo "requires the pdfinfo utility provided by the poppler-utils package"
+	exit 1
 fi
 
 # requires the pdfinfo utility provided by the poppler-utils package
@@ -19,7 +19,7 @@ pdfsize() {
 
 # check if the parameter is a valid PDF file
 if [[ -f "$1" && "$1" == *.pdf ]]; then
-    pdfsize "$1"
+	pdfsize "$1"
 else
-    echo "Please provide a valid PDF file as a parameter."
+	echo "Please provide a valid PDF file as a parameter."
 fi
