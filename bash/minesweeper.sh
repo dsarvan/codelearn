@@ -18,3 +18,10 @@ declare -a room # declare an array room, it will represent each cell/field of ou
 printf '\n\n'
 printf '%s' "     a   b   c   d   e   f   g   h   i   j"
 printf '\n   %s\n' "-----------------------------------------"
+
+r=0 # counter variable to keep track of how many horizontal rows have been populated
+for row in $(seq 0 9); do
+    printf '%d  ' "$row" # print the row numbers from 0-9
+done
+
+printf '\n'
