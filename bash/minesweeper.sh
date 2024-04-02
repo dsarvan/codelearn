@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+is_null_field() {
+    local e=$1
+    if [[ -z "${room[$e]}" ]]; then
+        room[$r]="."
+    fi
+}
+
 
 score=0 # will be used to store the score of the game
 
@@ -16,12 +23,20 @@ g="1 4 6 9 10 15 20 25 30 -30 -24 -11 -10 -9 -8 -7"
 declare -a room # declare an array room, it will represent each cell/field of our mine
 
 printf '\n\n'
-printf '%s' "     a   b   c   d   e   f   g   h   i   j"
-printf '\n   %s\n' "-----------------------------------------"
+printf '%s' "     a    b    c    d    e    f    g    h    i    j"
+printf '\n   %s\n' "---------------------------------------------------"
 
 r=0 # counter variable to keep track of how many horizontal rows have been populated
 for row in $(seq 0 9); do
     printf '%d  ' "$row" # print the row numbers from 0-9
-done
 
-printf '\n'
+    for col in $(seq 0 9); do
+        ((r+=1)) # increment the counter as we move forward in column sequence
+        is_null_field $r
+        printf '%s \e[33m%s\e[0m  ' "|" "${room[$r]}"
+    done
+
+    printf '%s\n' "|"
+    printf '   %s\n' "---------------------------------------------------"
+done
+printf '\n\n'
