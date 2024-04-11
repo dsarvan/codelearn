@@ -33,4 +33,9 @@ func main() {
     fmt.Printf("1 / Natural Log 2 =  %f\n", math.Log2E)
     fmt.Printf("1 / Natural Log 10 = %f\n", math.Log10E)
 
+    // Basic Math functions
+
+    // Abs: parameters(float64), returns float64
+    fmt.Printf("Absolute value = %f\n", math.Abs(float64(45) - float64(100)))
+
 }
