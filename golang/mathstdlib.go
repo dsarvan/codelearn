@@ -38,4 +38,19 @@ func main() {
     // Abs: parameters(float64), returns float64
     fmt.Printf("Absolute value = %f\n", math.Abs(float64(45) - float64(100)))
 
+    // Type casting
+    num := 77
+    fmt.Printf("Type of num = %T\n", num)
+    fmt.Printf("num integer cast = %d\n", int(num))
+    fmt.Printf("num float cast = %f\n", float64(num))
+    fmt.Printf("num string cast = %s\n", string(num))
+
+    fmt.Printf("bool cast true = %t\n", bool(true))
+    fmt.Printf("bool cast false = %t\n", bool(false))
+
+    // Note: the math package almost deals with float64 types rather
+    // than int to avoid backwards compatibility to perform operations
+    // on floating point values which can be casted into integers rather
+    // than defining separate functions for decimal values and integers
+
 }
