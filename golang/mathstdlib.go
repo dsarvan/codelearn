@@ -53,4 +53,14 @@ func main() {
     // on floating point values which can be casted into integers rather
     // than defining separate functions for decimal values and integers
 
+    // Min/Max: parameters(float64), returns float64
+    var x1 float64 = 54
+    var x2 float64 = 120
+
+    minimum := math.Min(float64(x1), float64(x2))
+    maximum := math.Max(float64(x1), float64(x2))
+
+    fmt.Printf("Minimum of %v and %v is %v\n", x1, x2, minimum)
+    fmt.Printf("Maximum of %v and %v is %v\n", x1, x2, maximum)
+
 }
