@@ -63,4 +63,13 @@ func main() {
     fmt.Printf("Minimum of %v and %v is %v\n", x1, x2, minimum)
     fmt.Printf("Maximum of %v and %v is %v\n", x1, x2, maximum)
 
+    var x float64 = 3
+    var y float64 = 4
+
+    // Pow: parameters(float64, float64), returns float64
+    fmt.Printf("Exponential result %v**%v = %v\n", x, y, math.Pow(x, y))
+
+    // Pow10: parameters(int), returns float64
+    fmt.Printf("Exponential result 10**%v = %v\n", x, math.Pow10(int(x)))
+
 }
