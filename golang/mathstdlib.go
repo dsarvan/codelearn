@@ -72,4 +72,7 @@ func main() {
     // Pow10: parameters(int), returns float64
     fmt.Printf("Exponential result 10**%v = %v\n", x, math.Pow10(int(x)))
 
+    // Sqrt: parameters(float64), returns float64
+    fmt.Printf("Square root of %v = %v\n", y, math.Sqrt(y))
+
 }
