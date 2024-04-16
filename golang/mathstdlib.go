@@ -75,4 +75,7 @@ func main() {
     // Sqrt: parameters(float64), returns float64
     fmt.Printf("Square root of %v = %v\n", y, math.Sqrt(y))
 
+    // Cbrt: parameters(float64), returns float64
+    fmt.Printf("Cube root of %v = %v\n", y, math.Cbrt(y))
+
 }
