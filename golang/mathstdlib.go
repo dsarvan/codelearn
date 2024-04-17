@@ -78,4 +78,12 @@ func main() {
     // Cbrt: parameters(float64), returns float64
     fmt.Printf("Cube root of %v = %v\n", y, math.Cbrt(y))
 
+    // Trunc: parameters(float64), returns float64
+    // Truncate function provides the way to round off a decimal value (float64)
+    // to an integer but it returns a value in float64
+    var result float64 = 445.235
+    fmt.Printf("Truncated value of %v = %v\n", result, math.Trunc(result))
+    result = 123.678
+    fmt.Printf("Truncated value of %v = %v\n", result, math.Trunc(result))
+
 }
