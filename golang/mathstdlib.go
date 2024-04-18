@@ -86,4 +86,12 @@ func main() {
     result = 123.678
     fmt.Printf("Truncated value of %v = %v\n", result, math.Trunc(result))
 
+    // Ceil: parameters(float64), returns float64
+    // Ceil function to round up the value to the next integer value
+    // but the value is returned as float64
+    result = 33.25
+    fmt.Printf("Ceiled value of %v = %v\n", result, math.Ceil(result))
+    result = 134.78
+    fmt.Printf("Ceiled value of %v = %v\n", result, math.Ceil(result))
+
 }
