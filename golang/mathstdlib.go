@@ -94,4 +94,10 @@ func main() {
     result = 134.78
     fmt.Printf("Ceiled value of %v = %v\n", result, math.Ceil(result))
 
+    // Trigonometric functions: parametets(float64), returns float64
+    // basic trigonometric functions: sin, cos, tan
+    fmt.Printf("sin(%v) = %v\n", math.Pi/2, math.Sin(math.Pi/2))
+    fmt.Printf("cos(%v) = %v\n", math.Pi/2, math.Cos(math.Pi/2))
+    fmt.Printf("tan(%v) = %v\n", math.Pi/2, math.Tan(math.Pi/2))
+
 }
