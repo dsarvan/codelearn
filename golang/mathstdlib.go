@@ -99,5 +99,9 @@ func main() {
     fmt.Printf("sin(%v) = %v\n", math.Pi/2, math.Sin(math.Pi/2))
     fmt.Printf("cos(%v) = %v\n", math.Pi/2, math.Cos(math.Pi/2))
     fmt.Printf("tan(%v) = %v\n", math.Pi/2, math.Tan(math.Pi/2))
+    // hyperbolic trigonometric functions: sinh, cosh, tanh
+    fmt.Printf("sinh(%v) = %v\n", math.Pi/2, math.Sinh(math.Pi/2))
+    fmt.Printf("cosh(%v) = %v\n", math.Pi/2, math.Cosh(math.Pi/2))
+    fmt.Printf("tanh(%v) = %v\n", math.Pi/2, math.Tanh(math.Pi/2))
 
 }
