@@ -103,5 +103,9 @@ func main() {
     fmt.Printf("sinh(%v) = %v\n", math.Pi/2, math.Sinh(math.Pi/2))
     fmt.Printf("cosh(%v) = %v\n", math.Pi/2, math.Cosh(math.Pi/2))
     fmt.Printf("tanh(%v) = %v\n", math.Pi/2, math.Tanh(math.Pi/2))
+    // inverse trigonometric functions: asin, acos, atan
+    fmt.Printf("asin(%v) = %v\n", math.Pi/8, math.Asin(math.Pi/8))
+    fmt.Printf("acos(%v) = %v\n", math.Pi/8, math.Acos(math.Pi/8))
+    fmt.Printf("atan(%v) = %v\n", math.Pi/8, math.Atan(math.Pi/8))
 
 }
