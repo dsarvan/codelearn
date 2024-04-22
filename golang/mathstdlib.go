@@ -107,5 +107,9 @@ func main() {
     fmt.Printf("asin(%v) = %v\n", math.Pi/8, math.Asin(math.Pi/8))
     fmt.Printf("acos(%v) = %v\n", math.Pi/8, math.Acos(math.Pi/8))
     fmt.Printf("atan(%v) = %v\n", math.Pi/8, math.Atan(math.Pi/8))
+    // inverse hyperbolic trigonometric functions: asinh, acosh, atanh
+    fmt.Printf("asinh(%v) = %v\n", 2*math.Pi, math.Asinh(2*math.Pi))
+    fmt.Printf("acosh(%v) = %v\n", 2*math.Pi, math.Acosh(2*math.Pi))
+    fmt.Printf("atanh(%v) = %v\n", 2*math.Pi, math.Atanh(2*math.Pi))
 
 }
