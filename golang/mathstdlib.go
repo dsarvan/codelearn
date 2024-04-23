@@ -112,4 +112,10 @@ func main() {
     fmt.Printf("acosh(%v) = %v\n", 2*math.Pi, math.Acosh(2*math.Pi))
     fmt.Printf("atanh(%v) = %v\n", 2*math.Pi, math.Atanh(2*math.Pi))
 
+    // Exponential functions
+    // Exp: parameters(float64), returns float64
+    fmt.Printf("exp(%v) = %v\n", x1, math.Exp(x1))
+    // Exp2: parameters(float64), returns float64
+    fmt.Printf("exp2(%v) = %v\n", x2, math.Exp2(x2))
+
 }
