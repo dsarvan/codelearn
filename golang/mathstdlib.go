@@ -118,4 +118,10 @@ func main() {
     // Exp2: parameters(float64), returns float64
     fmt.Printf("exp2(%v) = %v\n", x2, math.Exp2(x2))
 
+    // Logarithmic functions
+    // Log: parameters(float64), returns float64
+    fmt.Printf("log(%v) = %v\n", x1, math.Log(x1))
+    // Log2: parameters(float64), returns float64
+    fmt.Printf("log2(%v) = %v\n", x2, math.Log2(x2))
+
 }
