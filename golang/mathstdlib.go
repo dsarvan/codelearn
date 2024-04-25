@@ -8,6 +8,7 @@ package main
 import (
     "fmt"
     "math"
+    "math/rand"
 )
 
 func main() {
@@ -123,5 +124,13 @@ func main() {
     fmt.Printf("log(%v) = %v\n", x1, math.Log(x1))
     // Log2: parameters(float64), returns float64
     fmt.Printf("log2(%v) = %v\n", x2, math.Log2(x2))
+
+    // Random package
+    // Int: parameters(), returns int
+    fmt.Printf("pseudo random integer generation, x = %v\n", rand.Int())
+    // Intn: parameters(int), returns int
+    for i := 0; i < 5; i++ {
+        fmt.Printf("pseudo random number generation range, x = %v\n", rand.Intn(100))
+    }
 
 }
