@@ -8,6 +8,7 @@ package main
 import (
     "fmt"
     "math"
+    "math/bits"
     "math/rand"
 )
 
@@ -132,5 +133,15 @@ func main() {
     for i := 0; i < 5; i++ {
         fmt.Printf("pseudo random number generation range, x = %v\n", rand.Intn(100))
     }
+
+    // Bits package
+    // Add: parameters(uint, uint, uint), returns (uint, uint)
+    sum, carry := bits.Add(0, 9, 1)
+    fmt.Printf("Sum = %d, Carry = %d\n", sum, carry)
+    // Len: parameters(uint), returns int
+    var n uint = 45 // (45) in decimal = (1 0 1 1 0 1) in binary
+    fmt.Printf("Minimum bits required to represent %v = %d\n", n, bits.Len(n))
+    // OnesCount: parameters(uint), returns int
+    fmt.Printf("Set Bits in %v = %d\n", n, bits.OnesCount(n))
 
 }
