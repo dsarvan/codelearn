@@ -9,6 +9,7 @@ import (
     "fmt"
     "math"
     "math/bits"
+    "math/cmplx"
     "math/rand"
 )
 
@@ -143,5 +144,23 @@ func main() {
     fmt.Printf("Minimum bits required to represent %v = %d\n", n, bits.Len(n))
     // OnesCount: parameters(uint), returns int
     fmt.Printf("Set Bits in %v = %d\n", n, bits.OnesCount(n))
+
+    // Complex package
+    xc := complex(5, 8)
+    yc := complex(3, 4)
+
+    fmt.Printf("Complex number x = %v\n", xc)
+    fmt.Printf("Complex number y = %v\n", yc)
+    fmt.Printf("Modulus of x = %v\n", cmplx.Abs(xc))
+    fmt.Printf("Modulus of y = %v\n", cmplx.Abs(yc))
+    fmt.Printf("Conjugate of x = %v\n", cmplx.Conj(xc))
+    fmt.Printf("Conjugate of y = %v\n", cmplx.Conj(yc))
+    fmt.Printf("Phase of x = %v\n", cmplx.Phase(xc))
+    fmt.Printf("Phase of y = %v\n", cmplx.Phase(yc))
+
+    modx, phasex := cmplx.Polar(xc)
+    mody, phasey := cmplx.Polar(yc)
+    fmt.Printf("Polar form of x = %v, %v\n", modx, phasex)
+    fmt.Printf("Polar form of y = %v, %v\n", mody, phasey)
 
 }
