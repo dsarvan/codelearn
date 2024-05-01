@@ -30,6 +30,8 @@ func linspace(x1, x2 float64, n int) [80]float64 {
 //
 // :param int fs: sampling frequency in Hz
 // :param float64 sigma: pulse width in seconds
+//
+// :return: (t, g): time base (t) and the signal g(t)
 func gaussian(fs int, sigma float64) ([80]float64, [80]float64) {
 
 	var g [80]float64
