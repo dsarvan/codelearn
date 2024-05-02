@@ -6,20 +6,18 @@
 package main
 import "fmt"
 
-func fibonacci(x int) int {
-	if x == 0 {
-		return 0
-	}
-	else if x <= 2 {
-		return 1
-	}
-	else {
-		return fibonacci(x-2) + fibonacci(x-1)
-	}
+func fibonacci(n int) int {
+    x, y := 0, 1
+
+    for i := 0; i < n; i++ {
+        x, y = y, x+y
+    }
+
+    return x
 }
 
 func main() {
 
-	fmt.Println(fibonacci(5))
+	fmt.Println(fibonacci(100))
 
 }
