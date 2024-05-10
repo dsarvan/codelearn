@@ -3,7 +3,7 @@
 # Name: D.Saravanan
 # Date: 31/05/2021
 
-""" Script to compute nth value of the Fibonacci series """
+""" Script to compute nth value of the fibonacci series """
 
 
 def fibonacci(nval: int) -> int:
