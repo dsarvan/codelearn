@@ -4,6 +4,7 @@
 # Date: 29/10/2022
 
 """ Script to compute nth fibonacci using dynamic programming """
+# python -X int_max_str_digits=0 dynamfibn.py
 
 
 def fibonacci(n: int) -> int:
@@ -19,5 +20,5 @@ def fibonacci(n: int) -> int:
 
 
 if __name__ == "__main__":
-    N: int = 10
-    print(fibonacci(N))
+    N: int = 100000
+    print("Invalid input!" if N < 0 else fibonacci(N))
