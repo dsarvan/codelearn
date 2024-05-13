@@ -39,13 +39,13 @@ def gaussian(fs: int, sigma: float) -> tuple[np.ndarray, np.ndarray]:
     return t, g
 
 
-def main():
+def main() -> None:
 
-    fs = 80
-    sigma = 0.1
+    fs: int = 80
+    sigma: float = 0.1
     t, g = gaussian(fs, sigma)
 
-    fig, ax = plt.subplots()
+    _, ax = plt.subplots()
     ax.plot(t, g, "r", lw=1, label="gaussian")
     ax.grid(True, which="both")
     ax.set(xlim=(t[0], t[-1]), ylim=(0, 4.5))
