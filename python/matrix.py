@@ -13,3 +13,13 @@ B = np.array([[4, 7, 3], [-2, 11, 5], [-3, 1, -6]])
 
 print(f"Matrix A:\n {A}\n")
 print(f"Matrix B:\n {B}\n")
+
+
+""" Matrix Multiplication
+Matrix multiplication creates a new matrix from two matrices. Multiply each row of
+the first matrix with each column of the second matrix. Add the products to get each
+element in the new matrix. """
+
+C = np.dot(A, B)
+
+print(f"Matrix multiplication A*B:\n {C}\n")
