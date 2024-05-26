@@ -23,3 +23,14 @@ element in the new matrix. """
 C = np.dot(A, B)
 
 print(f"Matrix multiplication A*B:\n {C}\n")
+
+
+""" Matrix Inversion
+Multiply a matrix with its inverse to get the identity matrix. It helps solve systems
+of linear equations. Only square and non-singular matrices have an inverse. """
+
+A_inv = np.linalg.inv(A)
+B_inv = np.linalg.inv(B)
+
+print(f"Inverse of Matrix A:\n {A_inv}\n")
+print(f"Inverse of Matrix B:\n {B_inv}\n")
