@@ -45,3 +45,14 @@ det_B = np.linalg.det(B)
 
 print(f"Determinant of the Matrix A: {det_A}\n")
 print(f"Determinant of the Matrix B: {det_B}\n")
+
+
+# Matrix Trace:
+# The trace is the sum of the diagonal elements. It only applies to square matrices.
+# We get a single number as the trace.
+
+trace_A = np.trace(A)
+trace_B = np.trace(B)
+
+print(f"Trace of the Matrix A: {trace_A}\n")
+print(f"Trace of the Matrix B: {trace_B}\n")
