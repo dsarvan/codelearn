@@ -56,3 +56,13 @@ trace_B = np.trace(B)
 
 print(f"Trace of the Matrix A: {trace_A}\n")
 print(f"Trace of the Matrix B: {trace_B}\n")
+
+
+# Matrix Transpose:
+# The matrix transpose flips a matrix over its diagonal. It swaps rows with columns.
+
+transpose_A = np.transpose(A)
+transpose_B = np.transpose(B)
+
+print(f"Transpose of the Matrix A:\n {A.T}\n")
+print(f"Transpose of the Matrix B:\n {B.T}\n")
