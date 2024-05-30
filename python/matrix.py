@@ -66,3 +66,13 @@ transpose_B = np.transpose(B)
 
 print(f"Transpose of the Matrix A:\n {A.T}\n")
 print(f"Transpose of the Matrix B:\n {B.T}\n")
+
+
+# Eigenvalues and Eigenvectors:
+# Eigenvalues show the extent to which an eigenvector is scaled during transformation.
+# Eigenvectors do not change direction under this transformation.
+
+evals, evecs = np.linalg.eig(A)
+
+print(f"Eignevalues:\n {evals}\n")
+print(f"Eigenvectors:\n {evecs}\n")
