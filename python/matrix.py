@@ -76,3 +76,18 @@ evals, evecs = np.linalg.eig(A)
 
 print(f"Eignevalues:\n {evals}\n")
 print(f"Eigenvectors:\n {evecs}\n")
+
+
+# LU Decomposition:
+# LU decomposition breaks a matrix into two parts. One part is a lower triangular
+# matrix (L). The other part is an upper triangular matrix (U). It helps solve
+# linear least squares problems and find eigenvalues.
+
+from scipy.linalg import lu
+
+P, L, U = lu(A)
+
+print("LU Decomposition: A = P @ L @ U")
+print(f"Permutation Matrix P:\n {P}\n")
+print(f"Lower triangular Matrix (unit diagonal elements) L:\n {L}\n")
+print(f"Upper triangular Matrix U:\n {U}\n")
