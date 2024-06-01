@@ -85,9 +85,23 @@ print(f"Eigenvectors:\n {evecs}\n")
 
 from scipy.linalg import lu
 
-P, L, U = lu(A)
+P, L, U = lu(A) # A = P @ L @ U
 
 print("LU Decomposition: A = P @ L @ U")
 print(f"Permutation Matrix P:\n {P}\n")
 print(f"Lower triangular Matrix (unit diagonal elements) L:\n {L}\n")
 print(f"Upper triangular Matrix U:\n {U}\n")
+
+
+# QR Decomposition:
+# QR decomposition divides a matrix into two parts. One part is an orthogonal
+# matrix (Q). The other part is an upper triangular matrix (R). It helps solve
+# linear least squares problems and find eigenvalues.
+
+from scipy.linalg import qr
+
+Q, R = qr(A) # A = Q R
+
+print("QR Decomposition: A = Q R")
+print(f"Unitary/Orthogonal Matrix Q:\n {Q}\n")
+print(f"Upper triangular Matrix R:\n {R}\n")
