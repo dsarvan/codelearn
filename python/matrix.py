@@ -105,3 +105,18 @@ Q, R = qr(A) # A = Q R
 print("QR Decomposition: A = Q R")
 print(f"Unitary/Orthogonal Matrix Q:\n {Q}\n")
 print(f"Upper triangular Matrix R:\n {R}\n")
+
+
+# SVD (Singular Value Decomposition):
+# SVD decomposes a matrix into three matrices: U, S, and Vh. U and Vh are orthogonal
+# matrices. S is a diagonal matrix. It is useful in many applications like data
+# reduction and solving linear systems.
+
+from scipy.linalg import svd
+
+U, S, Vh = svd(A) # A = U @ S @ Vh, S is matrix of zeros with main diagonal s
+
+print("SVD Decomposition: A = U @ S @ Vh")
+print(f"Unitary Matrix U:\n {U}\n")
+print(f"Singular values (real, non-negative) s:\n {S}\n")
+print(f"Unitary Matrix Vh:\n {Vh}\n")
