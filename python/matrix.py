@@ -120,3 +120,22 @@ print("SVD Decomposition: A = U @ S @ Vh")
 print(f"Unitary Matrix U:\n {U}\n")
 print(f"Singular values (real, non-negative) s:\n {S}\n")
 print(f"Unitary Matrix Vh:\n {Vh}\n")
+
+
+# Solution of Linear Equations:
+# Find the values of variables that satisfy equations in a system. Each equation
+# represents a straight line. The solution is where these lines meet.
+
+# 4x + 2y + 4z = 44
+# 5x + 3y + 7z = 56
+# 9x + 3y + 6z = 72
+
+# using NumPy to solve the system of linear equations:
+
+A = np.array([[4, 2, 4], [5, 3, 7], [9, 3, 6]]) # matrix A
+B = np.array([44, 56, 72]) # vector B
+
+# solve the system of linear equations AX = B
+X = np.linalg.solve(A, B) # X = np.linalg.inv(A).dot(B)
+
+print(f"Solution to the system of linear equations AX = B: {X}\n")
