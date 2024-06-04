@@ -139,3 +139,15 @@ B = np.array([44, 56, 72]) # vector B
 X = np.linalg.solve(A, B) # X = np.linalg.inv(A).dot(B)
 
 print(f"Solution to the system of linear equations AX = B: {X}\n")
+
+# using SymPy to solve the system of linear equations:
+
+from sympy import Matrix
+
+A = Matrix([[4, 2, 4], [5, 3, 7], [9, 3, 6]]) # matrix A
+B = Matrix([44, 56, 72]) # vector B
+
+# solve the system of linear equations AX = B
+X = A.inv() * B
+
+print(f"Solution to the system of linear equations AX = B: {X}\n")
