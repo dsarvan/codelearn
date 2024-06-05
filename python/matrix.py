@@ -151,3 +151,19 @@ B = Matrix([44, 56, 72]) # vector B
 X = A.inv() * B
 
 print(f"Solution to the system of linear equations AX = B: {X}\n")
+
+
+# Least-Squares Fitting:
+# The least squares fitting finds the best match for data points. It lowers the
+# squared differences between actual and predicted values.
+
+A = np.array([[1, 1], [1, 2], [1, 3]]) # matrix A
+B = np.array([1, 2, 2]) # vector B
+
+# solve the linear matrix equation least-squares problem A @ x = B
+x, residuals, rank, s = np.linalg.lstsq(A, B, rcond=None)
+
+print(f"Least Squares solution: {x}")
+print(f"Residuals: {residuals}")
+print(f"Rank of the matrix: {rank}")
+print(f"Singular values: {s}\n")
