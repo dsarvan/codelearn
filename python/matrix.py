@@ -167,3 +167,19 @@ print(f"Least Squares solution: {x}")
 print(f"Residuals: {residuals}")
 print(f"Rank of the matrix: {rank}")
 print(f"Singular values: {s}\n")
+
+
+# Matrix Norms:
+# Matrix norms measure the size of a matrix. Norms are useful to check numerical
+# stability and analyze matrices.
+
+A = np.array([[4, 2, 4], [5, 3, 7], [9, 3, 6]]) # matrix A
+
+# compute various norms
+onenrm = np.linalg.norm(A, 1)
+froben = np.linalg.norm(A, 'fro')
+infint = np.linalg.norm(A, np.inf)
+
+print(f"1-Norm: {onenrm}")
+print(f"Frobenius: {froben}")
+print(f"InfinityN: {infint}\n")
