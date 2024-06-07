@@ -183,3 +183,15 @@ infint = np.linalg.norm(A, np.inf)
 print(f"1-Norm: {onenrm}")
 print(f"Frobenius: {froben}")
 print(f"InfinityN: {infint}\n")
+
+
+# Condition Number:
+# The condition number of a matrix measures sensitivity to input changes. A high
+# condition number means the solution could be unstable.
+
+A = np.array([[4, 2, 4], [5, 3, 7], [9, 3, 6]]) # matrix A
+
+# compute the condition number of the matrix
+condition_number = np.linalg.cond(A)
+
+print(f"Condition Number: {condition_number}\n")
