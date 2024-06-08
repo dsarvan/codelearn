@@ -195,3 +195,15 @@ A = np.array([[4, 2, 4], [5, 3, 7], [9, 3, 6]]) # matrix A
 condition_number = np.linalg.cond(A)
 
 print(f"Condition Number: {condition_number}\n")
+
+
+# Matrix Rank:
+# The rank of a matrix is the number of independent rows or columns. It shows the
+# matrix's size and its ability to cover vector spaces.
+
+A = np.array([[4, 2, 4], [5, 3, 7], [9, 3, 6]]) # matrix A
+
+# compute the rank of the matrix
+rank_A = np.linalg.matrix_rank(A)
+
+print(f"Matrix rank: {rank_A}\n")
