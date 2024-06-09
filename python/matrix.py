@@ -207,3 +207,9 @@ A = np.array([[4, 2, 4], [5, 3, 7], [9, 3, 6]]) # matrix A
 rank_A = np.linalg.matrix_rank(A)
 
 print(f"Matrix rank: {rank_A}\n")
+
+
+# Hermitian Conjugate:
+A = np.array([[4, 2, 4], [5, 3, 7], [9, 3, 6]]) # matrix A
+
+print(f"Hermitian conjugate of matrix A:\n {A.conj().T}")
