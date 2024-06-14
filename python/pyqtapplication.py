@@ -21,6 +21,14 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setCentralWidget(main_widget)
         main_layout = QtWidgets.QVBoxLayout(main_widget)
 
+        def add_widget_with_label(layout, widget, label_text):
+            """function to add widget with label"""
+            hbox = QtWidgets.QHBoxLayout()
+            label = QtWidgets.QLabel(label_text)
+            hbox.addWidget(label)
+            hbox.addWidget(widget)
+            layout.addLayout(hbox)
+
 
 def main():
     """pyqt application"""
