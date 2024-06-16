@@ -25,6 +25,15 @@ class MainWindow(QtWidgets.QMainWindow):
         self.label = QtWidgets.QLabel("Application PyQt6!")
         self.add_widget_with_label(main_layout, self.label, "QLabel:")
 
+        # QPushButton widget clickable button trigger actions
+        self.button = QtWidgets.QPushButton("Click Me")
+        self.button.clicked.connect(self.button_clicked)
+        self.add_widget_with_label(main_layout, self.button, "QPushButton:")
+
+    def button_clicked(self):
+        """function set text when clicked"""
+        self.label.setText("Button Clicked!")
+
     def add_widget_with_label(self, layout, widget, label_text):
         """function to add widget with label"""
         hbox = QtWidgets.QHBoxLayout()
@@ -32,7 +41,6 @@ class MainWindow(QtWidgets.QMainWindow):
         hbox.addWidget(label)
         hbox.addWidget(widget)
         layout.addLayout(hbox)
-
 
 
 def main():
