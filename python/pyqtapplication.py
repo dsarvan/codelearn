@@ -34,6 +34,11 @@ class MainWindow(QtWidgets.QMainWindow):
         self.line_edit = QtWidgets.QLineEdit()
         self.add_widget_with_label(main_layout, self.line_edit, "QLineEdit:")
 
+        # QComboBox widget combination of dropdown and text field
+        self.combo_box = QtWidgets.QComboBox()
+        self.combo_box.addItems(["Option 1", "Option 2", "Option 3"])
+        self.add_widget_with_label(main_layout, self.combo_box, "QComboBox:")
+
     def button_clicked(self):
         """function set text when clicked"""
         self.label.setText("Button Clicked!")
