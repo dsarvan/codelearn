@@ -39,6 +39,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.combo_box.addItems(["Option 1", "Option 2", "Option 3"])
         self.add_widget_with_label(main_layout, self.combo_box, "QComboBox:")
 
+        # QCheckBox widget box that users can check/uncheck
+        self.check_box = QtWidgets.QCheckBox("Check Me")
+        self.add_widget_with_label(main_layout, self.check_box, "QCheckBox:")
+
     def button_clicked(self):
         """function set text when clicked"""
         self.label.setText("Button Clicked!")
