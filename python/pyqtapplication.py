@@ -13,35 +13,39 @@ from PyQt6 import QtWidgets
 class MainWindow(QtWidgets.QMainWindow):
     """Subclass of QMainWindow to customize application's main window"""
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
         # main widget and layout
-        main_widget = QtWidgets.QWidget()
-        self.setCentralWidget(main_widget)
-        main_layout = QtWidgets.QVBoxLayout(main_widget)
+        widget = QtWidgets.QWidget()
+        self.setCentralWidget(widget)
+        layout = QtWidgets.QVBoxLayout(widget)
 
         # QLabel widget to display text/images
         self.label = QtWidgets.QLabel("Application PyQt6!")
-        self.add_widget_with_label(main_layout, self.label, "QLabel:")
+        self.add_widget_with_label(layout, self.label, "QLabel:")
 
         # QPushButton widget clickable button trigger actions
         self.button = QtWidgets.QPushButton("Click Me")
         self.button.clicked.connect(self.button_clicked)
-        self.add_widget_with_label(main_layout, self.button, "QPushButton:")
+        self.add_widget_with_label(layout, self.button, "QPushButton:")
 
         # QLineEdit widget allows users enter and edit single line text
         self.line_edit = QtWidgets.QLineEdit()
-        self.add_widget_with_label(main_layout, self.line_edit, "QLineEdit:")
+        self.add_widget_with_label(layout, self.line_edit, "QLineEdit:")
 
         # QComboBox widget combination of dropdown and text field
         self.combo_box = QtWidgets.QComboBox()
         self.combo_box.addItems(["Option 1", "Option 2", "Option 3"])
-        self.add_widget_with_label(main_layout, self.combo_box, "QComboBox:")
+        self.add_widget_with_label(layout, self.combo_box, "QComboBox:")
 
         # QCheckBox widget box that users can check/uncheck
         self.check_box = QtWidgets.QCheckBox("Check Me")
-        self.add_widget_with_label(main_layout, self.check_box, "QCheckBox:")
+        self.add_widget_with_label(layout, self.check_box, "QCheckBox:")
+
+        # QRadioButton widget selecting one option from set
+        self.radio_button = QtWidgets.QRadioButton("Radio Button")
+        self.add_widget_with_label(layout, self.radio_button, "QRadioButton:")
 
     def button_clicked(self):
         """function set text when clicked"""
