@@ -51,6 +51,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.text_edit = QtWidgets.QTextEdit()
         self.add_widget_with_label(layout, self.text_edit, "QTextEdit:")
 
+        # QSlider widget provides slider control like adjusting volume
+        self.slider = QtWidgets.QSlider()
+        self.add_widget_with_label(layout, self.slider, "QSlider:")
+
     def button_clicked(self):
         """function set text when clicked"""
         self.label.setText("Button Clicked!")
