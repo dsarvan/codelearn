@@ -55,6 +55,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.slider = QtWidgets.QSlider()
         self.add_widget_with_label(layout, self.slider, "QSlider:")
 
+        # QSpinBox widget lets users select number from given range
+        self.spin_box = QtWidgets.QSpinBox()
+        self.add_widget_with_label(layout, self.spin_box, "QSpinBox:")
+
     def button_clicked(self):
         """function set text when clicked"""
         self.label.setText("Button Clicked!")
