@@ -21,6 +21,14 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setCentralWidget(widget)
         layout = QtWidgets.QVBoxLayout(widget)
 
+    def add_widget_with_label(self, layout, widget, label_text):
+        """function to add widget with label"""
+        hbox = QtWidgets.QHBoxLayout()
+        label = QtWidgets.QLabel(label_text)
+        hbox.addWidget(label)
+        hbox.addWidget(widget)
+        layout.addLayout(hbox)
+
 
 def main():
     """pyside application"""
