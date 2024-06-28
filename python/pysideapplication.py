@@ -21,6 +21,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setCentralWidget(widget)
         layout = QtWidgets.QVBoxLayout(widget)
 
+        # QLabel widget to display text/images
+        self.label = QtWidgets.QLabel("Application PySide6!")
+        self.add_widget_with_label(layout, self.label, "QLabel:")
+
     def add_widget_with_label(self, layout, widget, label_text):
         """function to add widget with label"""
         hbox = QtWidgets.QHBoxLayout()
