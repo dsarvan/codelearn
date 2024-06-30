@@ -30,6 +30,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.button.clicked.connect(self.button_clicked)
         self.add_widget_with_label(layout, self.button, "QPushButton:")
 
+        # QLineEdit widget allows users enter and edit single line text
+        self.line_edit = QtWidgets.QLineEdit()
+        self.add_widget_with_label(layout, self.line_edit, "QLineEdit:")
+
     def button_clicked(self):
         """function set text when clicked"""
         self.label.setText("Button Clicked!")
