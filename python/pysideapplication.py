@@ -43,6 +43,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.check_box = QtWidgets.QCheckBox("Check Me")
         self.add_widget_with_label(layout, self.check_box, "QCheckBox:")
 
+        # QRadioButton widget selecting one option from set
+        self.radio_button = QtWidgets.QRadioButton("Radio Button")
+        self.add_widget_with_label(layout, self.radio_button, "QRadioButton:")
+
     def button_clicked(self):
         """function set text when clicked"""
         self.label.setText("Button Clicked!")
