@@ -47,6 +47,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.radio_button = QtWidgets.QRadioButton("Radio Button")
         self.add_widget_with_label(layout, self.radio_button, "QRadioButton:")
 
+        # QTextEdit widget multi-line text edit, text format, copy/past, scroll
+        self.text_edit = QtWidgets.QTextEdit()
+        self.add_widget_with_label(layout, self.text_edit, "QTextEdit:")
+
     def button_clicked(self):
         """function set text when clicked"""
         self.label.setText("Button Clicked!")
