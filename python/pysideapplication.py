@@ -59,6 +59,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.spin_box = QtWidgets.QSpinBox()
         self.add_widget_with_label(layout, self.spin_box, "QSpinBox:")
 
+        # QProgressBar widget displays task progress like file upload/download
+        self.progress_bar = QtWidgets.QProgressBar()
+        self.add_widget_with_label(layout, self.progress_bar, "QProgressBar:")
+
     def button_clicked(self):
         """function set text when clicked"""
         self.label.setText("Button Clicked!")
