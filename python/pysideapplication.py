@@ -63,6 +63,14 @@ class MainWindow(QtWidgets.QMainWindow):
         self.progress_bar = QtWidgets.QProgressBar()
         self.add_widget_with_label(layout, self.progress_bar, "QProgressBar:")
 
+        # QTableWidget widget displays structured data in tabular format
+        self.table_widget = QtWidgets.QTableWidget(8, 5)
+        for i in range(8):
+            for j in range(5):
+                item = QtWidgets.QTableWidgetItem(f"Cell {i+1},{j+1}")
+                self.table_widget.setItem(i, j, item)
+        self.add_widget_with_label(layout, self.table_widget, "QTableWidget:")
+
     def button_clicked(self):
         """function set text when clicked"""
         self.label.setText("Button Clicked!")
