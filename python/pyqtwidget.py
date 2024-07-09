@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# File: pyqtapplication.py
+# File: pyqtwidget.py
 # Name: D.Saravanan
 # Date: 19/04/2024
 
