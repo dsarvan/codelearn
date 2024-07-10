@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# File: pysideapplication.py
+# File: pysidewidget.py
 # Name: D.Saravanan
 # Date: 19/05/2024
 
