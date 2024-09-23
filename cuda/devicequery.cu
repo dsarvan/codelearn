@@ -18,24 +18,26 @@ void printDevProp(cudaDeviceProp devProp) {
     printf("Maximum memory pitch:          %lu\n", devProp.memPitch);
     printf("Maximum threads per block:     %d\n", devProp.maxThreadsPerBlock);
     for (int i = 0; i < 3; ++i)
-	    printf("Maximum dimension %d of block:  %d\n", i, devProp.maxThreadsDim[i]);
+    printf("Maximum dimension %d of block: %d\n", i, devProp.maxThreadsDim[i]);
     for (int i = 0; i < 3; ++i)
-    	printf("Maximum dimension %d of grid:  %d\n", i, devProp.maxGridSize[i]);
-    printf("Clock rate: %d\n", devProp.clockRate);
-    printf("Total constant memory: %lu\n", devProp.totalConstMem);
-    printf("Texture alignment: %lu\n", devProp.textureAlignment);
+    printf("Maximum dimension %d of grid:  %d\n", i, devProp.maxGridSize[i]);
+    printf("Clock rate:                    %d\n", devProp.clockRate);
+    printf("Total constant memory:         %lu\n", devProp.totalConstMem);
+    printf("Texture alignment:             %lu\n", devProp.textureAlignment);
     printf("Concurrent copy and execution: %s\n", (devProp.deviceOverlap ? "Yes" : "No"));
-    printf("Number of multiprocessors: %d\n", devProp.multiProcessorCount);
-    printf("Kernel execution timeout: %s\n", (devProp.kernelExecTimeoutEnabled ? "Yes" : "No"));
+    printf("Number of multiprocessors:     %d\n", devProp.multiProcessorCount);
+    printf("Kernel execution timeout:      %s\n", (devProp.kernelExecTimeoutEnabled ? "Yes" : "No"));
     return;
 }
 
 int main() {
-    int devCount;
+
+    int devCount; /* Number of CUDA devices */
     cudaGetDeviceCount(&devCount);
     printf("CUDA Device Query...\n");
     printf("There are %d CUDA devices.\n", devCount);
 
+    /* Iterate through devices */
     for (int i = 0; i < devCount; ++i) {
         /* Get device properties */
         printf("\nCUDA Device #%d\n", i);
@@ -43,5 +45,6 @@ int main() {
         cudaGetDeviceProperties(&devProp, i);
         printDevProp(devProp);
     }
+
     return 0;
 }
