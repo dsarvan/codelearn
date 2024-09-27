@@ -12,7 +12,7 @@ __global__ void kernelFunction() {
 }
 
 int main() {
-    printf("Printing from the CPU!\n);
+    printf("Printing from the CPU!\n");
 
     /* set which device should be used */
     /* the program will default to 0 if not called though */
